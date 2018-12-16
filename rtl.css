@@ -1,0 +1,608 @@
+/*
+Theme Name: Twenty Seventeen
+
+Adding support for languages written in a Right To Left (RTL) direction is easy,
+it's just a matter of overwriting all the horizontal positioning attributes
+of your CSS stylesheet in a separate stylesheet file named rtl.css.
+
+https://codex.wordpress.org/Right-to-Left_Language_Support
+
+*/
+/* Reset */
+/* line 14, rtl.scss */
+body {
+  direction: rtl;
+  unicode-bidi: embed;
+}
+
+/* line 19, rtl.scss */
+th {
+  text-align: right;
+}
+
+/* Accessibility */
+/* line 25, rtl.scss */
+.screen-reader-text:focus {
+  left: auto;
+  right: 5px;
+}
+
+/* Typography */
+/* line 32, rtl.scss */
+textarea {
+  padding-right: 3px;
+}
+
+/* line 36, rtl.scss */
+li > ul,
+li > ol {
+  margin-left: 0;
+  margin-right: 1.5em;
+}
+
+/* line 42, rtl.scss */
+th:first-child,
+td:first-child {
+  padding-left: 0.4em;
+  padding-right: 0;
+}
+
+/* line 48, rtl.scss */
+th:last-child,
+td:last-child {
+  padding-left: 0;
+  padding-right: 0.4em;
+}
+
+/* Forms */
+/* line 56, rtl.scss */
+input[type="radio"],
+input[type="checkbox"] {
+  margin-left: 0.5em;
+  margin-right: 0;
+}
+
+/* Media */
+/* line 64, rtl.scss */
+.mejs-offscreen {
+  right: -10000px;
+}
+
+/* Site Branding */
+/* line 70, rtl.scss */
+.custom-logo-link {
+  padding-left: 1em;
+  padding-right: 0;
+}
+
+/* Main Navigation */
+/* line 77, rtl.scss */
+.main-navigation ul {
+  text-align: right;
+}
+
+/* line 81, rtl.scss */
+.main-navigation ul ul {
+  padding-left: 0;
+  padding-right: 1.5em;
+}
+
+/* line 86, rtl.scss */
+.menu-toggle .icon {
+  margin-left: 0.5em;
+  margin-right: 0;
+}
+
+/* line 91, rtl.scss */
+.dropdown-toggle {
+  left: -0.5em;
+  right: auto;
+}
+
+/* Front Page */
+/* line 98, rtl.scss */
+.wp-custom-header-video-button {
+  left: 30px;
+  right: auto;
+}
+
+/* line 103, rtl.scss */
+.twentyseventeen-panel .recent-posts .entry-header .edit-link {
+  margin-left: 0;
+  margin-right: 1em;
+}
+
+/* Blog, Archive, Search */
+/* line 110, rtl.scss */
+.blog .entry-meta a.post-edit-link,
+.archive .entry-meta a.post-edit-link,
+.search .entry-meta a.post-edit-link {
+  margin-left: 0;
+  margin-right: 1em;
+}
+
+/* line 117, rtl.scss */
+.search .page .entry-meta a.post-edit-link {
+  margin-right: 0;
+}
+
+/* line 121, rtl.scss */
+.sticky .icon-thumb-tack {
+  left: auto;
+  right: -1.5em;
+}
+
+/* line 126, rtl.scss */
+.prev.page-numbers .icon,
+.next.page-numbers .icon {
+  display: inline-block;
+  -ms-transform: rotate(180deg);
+  /* IE 9 */
+  -webkit-transform: rotate(180deg);
+  /* Chrome, Safari, Opera */
+  transform: rotate(180deg);
+}
+
+/* line 134, rtl.scss */
+.prev.page-numbers {
+  float: right;
+}
+
+/* line 138, rtl.scss */
+.next.page-numbers {
+  float: left;
+}
+
+/* line 142, rtl.scss */
+.nav-links .nav-previous .nav-title .nav-title-icon-wrapper {
+  margin-left: 0.5em;
+  margin-right: 0;
+}
+
+/* line 147, rtl.scss */
+.nav-links .nav-next .nav-title .nav-title-icon-wrapper {
+  margin-left: 0;
+  margin-right: 0.5em;
+}
+
+/* Blog Entries */
+/* line 154, rtl.scss */
+.entry-footer .cat-links,
+.entry-footer .tags-links {
+  padding-left: 0;
+  padding-right: 2.5em;
+}
+
+/* line 160, rtl.scss */
+.entry-footer .cat-links .icon,
+.entry-footer .tags-links .icon {
+  left: auto;
+  margin-left: 0.5em;
+  margin-right: 0;
+  right: 0;
+}
+
+/* Comments */
+/* line 170, rtl.scss */
+.comment-body {
+  margin-left: 0;
+  margin-right: 65px;
+}
+
+/* line 175, rtl.scss */
+.comment-reply-link .icon {
+  left: auto;
+  right: -2em;
+  -webkit-transform: scale(-1, 1);
+  -ms-transform: scale(-1, 1);
+  transform: scale(-1, 1);
+}
+
+/* line 183, rtl.scss */
+.comment-author .avatar {
+  left: auto;
+  right: -65px;
+}
+
+/* line 188, rtl.scss */
+.comment-reply-link:before {
+  left: auto;
+  right: -2em;
+}
+
+/* line 193, rtl.scss */
+.children .comment-author .avatar {
+  left: auto;
+  right: -45px;
+}
+
+/* line 198, rtl.scss */
+.form-submit {
+  text-align: left;
+}
+
+/* Post Formats */
+/* line 204, rtl.scss */
+.format-quote blockquote .icon {
+  left: auto;
+  right: -1.25em;
+  -webkit-transform: none;
+  -ms-transform: none;
+  transform: none;
+}
+
+/* Post Navigation */
+/* line 214, rtl.scss */
+.nav-links .nav-previous .nav-title .nav-title-icon-wrapper,
+.nav-links .nav-next .nav-title .nav-title-icon-wrapper {
+  display: inline-block;
+  -ms-transform: rotate(180deg);
+  /* IE 9 */
+  -webkit-transform: rotate(180deg);
+  /* Chrome, Safari, Opera */
+  transform: rotate(180deg);
+}
+
+/* Widgets */
+/* line 224, rtl.scss */
+.widget ul {
+  margin: 0;
+}
+
+/* line 228, rtl.scss */
+.search-form .search-submit {
+  left: 3px;
+  right: auto;
+}
+
+/* line 233, rtl.scss */
+.widget .tagcloud a,
+.widget.widget_tag_cloud a,
+.wp_widget_tag_cloud a {
+  float: right;
+  margin: 4px 0 0 4px !important;
+  /* !important to override inline styles */
+}
+
+/* line 240, rtl.scss */
+.widget ul li li {
+  padding-left: 0;
+  padding-right: 1.5rem;
+}
+
+/* line 245, rtl.scss */
+.widget_text ul {
+  margin: 0 1.5em 1.5em 0;
+}
+
+/* line 249, rtl.scss */
+.widget_text ul li ul {
+  margin: 0 1.5em 0 0;
+}
+
+/* Footer */
+/* line 255, rtl.scss */
+.social-navigation a {
+  margin-left: 1em;
+  margin-right: 0;
+}
+
+/* Customizer styles */
+/* line 262, rtl.scss */
+.twentyseventeen-customizer.twentyseventeen-front-page .twentyseventeen-panel .twentyseventeen-panel-title {
+  left: 3.2em;
+  right: auto;
+}
+
+/* Gallery Styles */
+/* line 269, rtl.scss */
+.gallery-item,
+.gallery-caption {
+  text-align: right;
+}
+
+/* SVG Fallback */
+/* line 276, rtl.scss */
+.no-svg .dropdown-toggle {
+  left: 0;
+  right: auto;
+}
+
+/* Media queries */
+@media screen and (min-width: 48em) {
+  /* line 285, rtl.scss */
+  body.page-template-full-width-page #primary {
+    float: none;
+  }
+
+  /* line 289, rtl.scss */
+  .has-sidebar:not(.error404) #primary {
+    float: right;
+  }
+
+  /* line 293, rtl.scss */
+  .has-sidebar #secondary {
+    float: left;
+  }
+
+  /* line 297, rtl.scss */
+  .error404 #primary {
+    float: none;
+  }
+
+  /* Site Branding */
+  /* line 303, rtl.scss */
+  .custom-logo-link {
+    padding-left: 2em;
+    padding-right: 0;
+  }
+
+  /* Navigation */
+  /* line 310, rtl.scss */
+  .main-navigation ul ul {
+    padding-right: 0;
+  }
+
+  /* line 314, rtl.scss */
+  .main-navigation ul ul:before,
+  .main-navigation ul ul:after {
+    left: 0.5em;
+    right: auto;
+  }
+
+  /* line 320, rtl.scss */
+  .main-navigation ul ul,
+  .main-navigation ul ul ul {
+    left: auto;
+    right: -999em;
+  }
+
+  /* line 326, rtl.scss */
+  .main-navigation ul ul li:hover > ul,
+  .main-navigation ul ul li.focus > ul {
+    left: auto;
+    right: 100%;
+  }
+
+  /* line 332, rtl.scss */
+  .main-navigation ul li:hover > ul,
+  .main-navigation ul li.focus > ul {
+    left: auto;
+    right: 0.5em;
+  }
+
+  /* line 338, rtl.scss */
+  .main-navigation ul li.menu-item-has-children:before,
+  .main-navigation ul li.menu-item-has-children:after,
+  .main-navigation ul li.page_item_has_children:before,
+  .main-navigation ul li.page_item_has_children:after {
+    left: 1em;
+    right: auto;
+  }
+
+  /* line 346, rtl.scss */
+  .main-navigation .menu-item-has-children > a > .icon,
+  .main-navigation .page_item_has_children > a > .icon {
+    left: auto;
+    right: 5px;
+  }
+
+  /* line 352, rtl.scss */
+  .main-navigation ul ul .menu-item-has-children > a > .icon,
+  .main-navigation ul ul .page_item_has_children > a > .icon {
+    left: 1em;
+    right: auto;
+    -webkit-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+  }
+
+  /* Scroll down arrow */
+  /* line 363, rtl.scss */
+  .navigation-top .menu-scroll-down {
+    left: 0;
+    right: auto;
+  }
+
+  /* line 368, rtl.scss */
+  .site-header .menu-scroll-down {
+    left: 0;
+    right: auto;
+  }
+
+  /* line 373, rtl.scss */
+  .entry-title a {
+    margin-left: auto;
+    margin-right: -2px;
+  }
+
+  /* Front Page */
+  /* line 380, rtl.scss */
+  .page-two-column .panel-content .entry-header {
+    float: right;
+  }
+
+  /* line 384, rtl.scss */
+  .page-two-column .panel-content .entry-content {
+    float: left;
+  }
+
+  /* Front Page - Recent Posts */
+  /* line 390, rtl.scss */
+  .page-two-column .panel-content .recent-posts {
+    clear: left;
+    float: left;
+  }
+
+  /* Blog, Archive, Search */
+  /* line 397, rtl.scss */
+  .sticky .icon-thumb-tack {
+    left: auto;
+    right: -2.5em;
+  }
+
+  /* line 402, rtl.scss */
+  body:not(.has-sidebar):not(.page-one-column) .page-header,
+  body.has-sidebar.error404 #primary .page-header,
+  body.page-two-column:not(.archive) #primary .entry-header,
+  body.page-two-column.archive:not(.has-sidebar) #primary .page-header {
+    float: right;
+  }
+
+  /* line 409, rtl.scss */
+  .blog:not(.has-sidebar) #primary article,
+  .archive:not(.has-sidebar):not(.page-one-column) #primary article,
+  .search:not(.has-sidebar) #primary article,
+  .has-sidebar.error404 #primary .page-content,
+  .error404.has-sidebar #primary .page-content,
+  body.page-two-column:not(.archive) #primary .entry-content,
+  body.page-two-column #comments {
+    float: left;
+  }
+
+  /* line 419, rtl.scss */
+  .entry-footer .edit-link a.post-edit-link {
+    margin-left: 0;
+    margin-right: 1em;
+  }
+
+  /* Entry content */
+  /* with sidebar */
+  /* line 428, rtl.scss */
+  .has-sidebar .entry-content blockquote.alignleft {
+    margin-left: 0;
+    width: 34%;
+  }
+
+  /* line 433, rtl.scss */
+  .has-sidebar #primary .entry-content blockquote.alignright,
+  .has-sidebar #primary .entry-content blockquote.alignright.below-entry-meta {
+    margin-right: 0;
+    width: 34%;
+  }
+
+  /* line 439, rtl.scss */
+  .has-sidebar #primary .entry-content blockquote.alignleft.below-entry-meta {
+    margin-left: -72.5%;
+    width: 62%;
+  }
+
+  /* blog index and archive */
+  /* line 446, rtl.scss */
+  .blog:not(.has-sidebar) .entry-content blockquote.alignleft,
+  .twentyseventeen-front-page.page-two-column .entry-content blockquote.alignleft,
+  .archive:not(.has-sidebar) .entry-content blockquote.alignleft,
+  .page-two-column .entry-content blockquote.alignleft {
+    margin-left: 0;
+    width: 34%;
+  }
+
+  /* line 454, rtl.scss */
+  .blog:not(.has-sidebar) .entry-content blockquote.alignright,
+  .twentyseventeen-front-page.page-two-column #primary .entry-content blockquote.alignright,
+  .archive:not(.has-sidebar) .entry-content blockquote.alignright,
+  .page-two-column #primary .entry-content blockquote.alignright {
+    margin-right: -72.5%;
+    width: 62%;
+  }
+
+  /* Post formats */
+  /* line 464, rtl.scss */
+  .format-quote blockquote .icon {
+    left: auto;
+    right: -1.5em;
+  }
+
+  /* line 469, rtl.scss */
+  .navigation.pagination {
+    float: left;
+  }
+
+  /* line 473, rtl.scss */
+  .has-sidebar .navigation.pagination,
+  .archive.page-one-column:not(.has-sidebar) .navigation.pagination {
+    float: none;
+  }
+
+  /* line 478, rtl.scss */
+  .post-navigation .nav-previous {
+    float: right;
+  }
+
+  /* line 482, rtl.scss */
+  .post-navigation .nav-next {
+    float: left;
+    text-align: left;
+  }
+
+  /* Comments */
+  /* line 489, rtl.scss */
+  ol.children .children {
+    padding-left: 0;
+    padding-right: 2em;
+  }
+
+  /* Post Navigation */
+  /* line 496, rtl.scss */
+  .nav-links .nav-previous .nav-title .nav-title-icon-wrapper {
+    left: auto;
+    right: -2em;
+  }
+
+  /* line 501, rtl.scss */
+  .nav-links .nav-next .nav-title .nav-title-icon-wrapper {
+    left: -2em;
+    right: auto;
+  }
+
+  /* Footer */
+  /* line 508, rtl.scss */
+  .site-footer .widget-column.footer-widget-1 {
+    float: right;
+  }
+
+  /* line 512, rtl.scss */
+  .site-footer .widget-column.footer-widget-2 {
+    float: left;
+  }
+
+  /* line 516, rtl.scss */
+  .social-navigation {
+    clear: right;
+    float: right;
+  }
+
+  /* line 521, rtl.scss */
+  .site-info {
+    float: right;
+  }
+
+  /* line 525, rtl.scss */
+  .social-navigation + .site-info {
+    margin-left: 0;
+    margin-right: 6%;
+  }
+}
+@media screen and (min-width: 67em) {
+  /* Sticky posts */
+  /* line 535, rtl.scss */
+  .sticky .icon-thumb-tack {
+    left: auto;
+    right: -1.25em;
+  }
+}
+@media screen and (min-width: 79em) {
+  /* line 543, rtl.scss */
+  .has-sidebar #primary .entry-content blockquote.alignright,
+  .has-sidebar #primary .entry-content blockquote.alignright.below-entry-meta {
+    margin-right: -20%;
+  }
+
+  /* line 548, rtl.scss */
+  .blog:not(.has-sidebar) .entry-content blockquote.alignleft,
+  .archive:not(.has-sidebar) .entry-content blockquote.alignleft,
+  .page-two-column .entry-content blockquote.alignleft,
+  .twentyseventeen-front-page .entry-content blockquote.alignleft {
+    margin-left: -20%;
+  }
+}

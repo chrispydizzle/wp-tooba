@@ -10,10 +10,7 @@
  */
 
 require_once 'shortcodes.php';
-
-@ini_set( 'upload_max_size' , '64M' );
-@ini_set( 'post_max_size', '64M');
-@ini_set( 'max_execution_time', '300' );
+include_once 'toobacatalog.php';
 
 /**
  * Sets up theme defaults and registers support for various WordPress features.
@@ -40,7 +37,7 @@ function tooba_setup() {
 	add_theme_support( 'custom-logo', array(
 		'height'     => 80,
 		'flex-width' => true
-        ,
+	,
 	) );
 
 	// Add theme support for selective refresh for widgets.
@@ -56,17 +53,27 @@ function tooba_setup() {
 }
 
 add_action( 'after_setup_theme', 'tooba_setup' );
+add_action( 'wp_ajax_get_items', 'get_items' );
+add_action( 'wp_ajax_nopriv_get_items', 'get_items' );
+function get_items() {
+	global $item_images_table_name;
+	global $wpdb;
+	$id       = sanitize_text_field( $_POST['ident'] );
+	$Products = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM $item_images_table_name WHERE ITEM_ID = %s", $id ) );
+	echo json_encode( $Products );
+	die();
+}
 
-function add_shortcodes(){
+function add_shortcodes() {
 	add_shortcode( 'about_page', 'sc_about' );
 	add_shortcode( 'header_banner', 'sc_headerbanner' );
 	add_shortcode( 'jazzy_counter', 'sc_counter' );
-	add_shortcode( 'productfeed', 'sc_productfeed');
-	add_shortcode( 'team', 'sc_team');
-	add_shortcode( 'contact_us', 'sc_contact');
-	add_shortcode( 'latest_news', 'sc_news');
-	add_shortcode( 'testimonials', 'sc_testimonials');
-	add_shortcode( 'footer', 'sc_footer');
+	add_shortcode( 'productfeed', 'sc_productfeed' );
+	add_shortcode( 'team', 'sc_team' );
+	add_shortcode( 'contact_us', 'sc_contact' );
+	add_shortcode( 'latest_news', 'sc_news' );
+	add_shortcode( 'testimonials', 'sc_testimonials' );
+	add_shortcode( 'footer', 'sc_footer' );
 }
 
 
@@ -110,16 +117,19 @@ add_action( 'wp_head', 'tooba_javascript_detection', 0 );
  * Enqueue scripts and styles.
  */
 function tooba_scripts() {
-	// Add custom fonts, used in the main stylesheet.
 	wp_enqueue_style( 'tooba-fonts', tooba_fonts_url(), array(), null );
 	wp_enqueue_style( 'tooba-style', get_stylesheet_uri() );
-	//wp_enqueue_style( 'bootstrap', get_theme_file_uri( '/style/bootstrap.min.css' ) );
+	wp_enqueue_style( 'lightbox-style', get_theme_file_uri( '/style/lightbox.min.css' ) );
+
 	wp_register_script( 'cpsharp', get_theme_file_uri( '/js/cpsharp.js' ) );
-	//wp_register_script( 'bootstrapbundle', get_theme_file_uri( '/js/bootstrap.bundle.min.js' ), [ 'jq3' ] );
+
+	wp_localize_script( 'cpsharp', 'serverhelp', array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );
+
 	wp_register_script( 'bootstrapjs', get_theme_file_uri( '/js/bootstrap.min.js' ), [ 'bootstrapbundle' ] );
+	wp_register_script( 'lightbox', get_theme_file_uri( '/js/lightbox.min.js' ) );
 	wp_enqueue_script( 'cpsharp' );
-	//wp_enqueue_script( 'bootstrapbundle' );
-	// wp_enqueue_script( 'bootstrapjs' );
+	wp_enqueue_script( 'lightbox' );
+
 
 	$twentyseventeen_l10n = array(
 		'quote' => twentyseventeen_get_svg( array( 'icon' => 'quote-right' ) ),

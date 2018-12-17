@@ -79,12 +79,24 @@ ul.menu {
 
 }
 
-.portfolio-post img {
-  max-height: 18vw;
-  width: 100%;
+.portfolio-post {
+  text-align: center;
+
+  img {
+    height: 100%;
+  }
 }
 
+
+
 @media screen and (max-width: 767px) {
+
+  .portfolio-box .showme, .portfolio-box .showme img {
+    max-height: 30vh;
+  }
+
+
+
   .stretchto {
     background-size: cover;
     display: block;
@@ -122,6 +134,10 @@ ul.menu {
       padding: 1vh 0 1% 0;
       width: 99%;
     }
+  }
+
+  .portfolio-box .product img {
+    width: 100%;
   }
 
   .menu-main-menu-container {
@@ -182,6 +198,14 @@ ul.menu {
     height: 100%;
     margin: 0 12%;
     padding: 0;
+  }
+
+  .portfolio-box .product img{
+    width: 100%;
+  }
+
+  .portfolio-box .showme, .portfolio-box .showme img {
+    max-height: 450px;
   }
 }
 
@@ -1124,7 +1148,7 @@ h3 {
 .portfolio-box {
   .portfolio-post {
     cursor: pointer;
-    transition: all .5s ease;
+    transition: all 1s ease;
     border: solid 1px rgba(0, 0, 0, 0.29);
 
     &:hover {
@@ -1145,9 +1169,9 @@ h3 {
   .hideme {
   }
 
-  .showme {
+  .showme, .showme img {
     opacity: 1;
-    max-height: 450px;
+    max-height: 35vh;
   }
 }
 
@@ -1168,7 +1192,7 @@ h3 {
     text-decoration: none;
     background: rgb(150, 200, 50);
     font-variant: small-caps;
-    /* border-radius: 12px; */
+
     color: rgb(249, 241, 241);
     font-size: 2.2em;
     border: rgb(0, 0, 0) 1px solid;
@@ -1177,12 +1201,12 @@ h3 {
     top: -0.2em;
     left: 0;
 
-    /* box-shadow: 2px 1px 14px 1px #000000ad; */
+
     &:hover {
       box-shadow: none;
       color: rgb(150, 200, 50);
       background: rgb(254, 254, 254);
-      // top: .1em;
+
     }
   }
 }

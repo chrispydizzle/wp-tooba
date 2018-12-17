@@ -87,7 +87,15 @@ ul.menu {
   }
 }
 
-
+#lightbox .lb-caption {
+  p, h1 {
+    background: rgba(0, 0, 0, .5);
+    border: black solid 1px;
+    word-break: break-all;
+    line-height: 1em;
+    position: fixed;
+  }
+}
 
 @media screen and (max-width: 767px) {
 
@@ -95,7 +103,17 @@ ul.menu {
     max-height: 30vh;
   }
 
-
+  #lightbox .lb-caption {
+    p, h1 {
+      font-size: 2em;
+      left: 5vw;
+      top: 50vh;
+      font-weight: 100;
+      width: 75vw;
+      padding: 1em 1em;
+      height: 25vh;
+    }
+  }
 
   .stretchto {
     background-size: cover;
@@ -120,6 +138,20 @@ ul.menu {
 }
 
 @media screen and (min-width: 768px) {
+
+  #lightbox .lb-caption {
+    p, h1 {
+      font-size: 2em;
+      position: fixed;
+      left: 2vw;
+      top: 5vh;
+      font-weight: 100;
+      width: 10vw;
+      padding: 1em 1em;
+      height: 50vh;
+    }
+  }
+
   .navbar {
     .navbar-default {
       @include transition(all, .2s, ease-in-out);
@@ -200,7 +232,7 @@ ul.menu {
     padding: 0;
   }
 
-  .portfolio-box .product img{
+  .portfolio-box .product img {
     width: 100%;
   }
 

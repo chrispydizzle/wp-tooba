@@ -59,6 +59,7 @@ function get_items() {
 	global $item_images_table_name;
 	global $wpdb;
 	$id       = sanitize_text_field( $_POST['ident'] );
+	$datadesc       = sanitize_text_field( $_POST['datadescription'] );
 	$Products = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM $item_images_table_name WHERE ITEM_ID = %s", $id ) );
 	echo json_encode( $Products );
 	die();
@@ -126,7 +127,8 @@ function tooba_scripts() {
 	wp_localize_script( 'cpsharp', 'serverhelp', array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );
 
 	wp_register_script( 'bootstrapjs', get_theme_file_uri( '/js/bootstrap.min.js' ), [ 'bootstrapbundle' ] );
-	wp_register_script( 'lightbox', get_theme_file_uri( '/js/lightbox.min.js' ) );
+	// wp_register_script( 'lightbox', get_theme_file_uri( '/js/lightbox.min.js' ) );
+	wp_register_script( 'lightbox', get_theme_file_uri( '/js/lightbox.js' ) );
 	wp_enqueue_script( 'cpsharp' );
 	wp_enqueue_script( 'lightbox' );
 

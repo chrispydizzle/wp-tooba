@@ -1,12 +1,27 @@
 jQuery(document).ready(function () {
     adjust();
+    setInterval(toggleScrollButton, 250);
+
+    jQuery('#top').click(function () {
+        TweenMax.to(window, 2, {scrollTo: {y: 0, autoKill: true}, ease: Power2.easeInOut});
+    });
 
     jQuery('a').click(function () {
-        // return false;
+        const link = jQuery(this);
+        if (link.parents('#top-menu').length > 0) {
+            let anchor = link.attr('href');
+            if (anchor.startsWith('#')) {
+                anchor = anchor.substring(1);
+                const location = jQuery("[data-anchor='" + anchor + "'");
+                const position = location.offset().top;
+                TweenMax.to(window, 2, {scrollTo: {y: position, autoKill: true}, ease: Power2.easeInOut});
+                return false;
+            }
+        }
     });
 
     jQuery('.seemorelink').click(function () {
-        var candidates = jQuery(this).parent().siblings('.hideme');
+        let candidates = jQuery(this).parent().siblings('.hideme');
         if (candidates.length > 3) {
             candidates = candidates.slice(0, 3);
         } else {
@@ -21,9 +36,9 @@ jQuery(document).ready(function () {
 
     jQuery('.product').click(function (t) {
         if (jQuery(t.target).hasClass('noretrigger')) return;
-        var id = jQuery(this).attr('data-id');
-        var order = jQuery(this).attr('data-order');
-        var desc = jQuery(this).attr('data-description');
+        const id = jQuery(this).attr('data-id');
+        const order = jQuery(this).attr('data-order');
+        const desc = jQuery(this).attr('data-description');
         jQuery.post({
             url: serverhelp.ajax_url,
             data: ({
@@ -42,15 +57,15 @@ jQuery(document).resize(function () {
 
 function handleResponse(response) {
     console.log(response);
-    var result = JSON.parse(response);
-    var container = jQuery('#fcont' + result[0].Item_ID);
-    var description = container.parent().parent().parent().parent().attr('data-description');
+    const result = JSON.parse(response);
+    const container = jQuery('#fcont' + result[0].Item_ID);
+    const description = container.parent().parent().parent().parent().attr('data-description');
     container.empty();
-    for (var i = 0; i < result.length; i++) {
-        container.append('<a class="noretrigger" href="' + result[i].Item_Image_URL + '" data-title="'+ description+'" data-lightbox="Item' + result[i].Item_ID + '">' + result[i].Item_Image_Description + '</a>');
+    for (let i = 0; i < result.length; i++) {
+        container.append('<a class="noretrigger" href="' + result[i].Item_Image_URL + '" data-title="' + description + '" data-lightbox="Item' + result[i].Item_ID + '">' + result[i].Item_Image_Description + '</a>');
     }
 
-    var targetGuy = container.children(':first');
+    const targetGuy = container.children(':first');
 
     targetGuy.click(function (e, t) {
 
@@ -67,7 +82,25 @@ function adjust() {
         let theight = t.height();
         titem.height(theight);
         t.parent().height(theight);
+    }
 
+    var hBoxes = jQuery('.inner-hover');
+    for (var i = 0; i < hBoxes.length; i++) {
+        var boxText = jQuery(hBoxes[i]).children('h4');
+        var parentBox = jQuery(hBoxes[i]).parents('.hover-box');
+        boxText.css('line-height', parentBox.height() + 'px');
+        boxText.css('height', parentBox.height() + 'px');
+
+    }
+}
+
+function toggleScrollButton() {
+    var topbutton = jQuery('#top');
+
+    if (jQuery(window).scrollTop() >= 100) {
+         // TweenMax.to(topbutton, 5, { scrollTo: {y: position, autoKill: true}, ease: Power2.easeInOut});
+    } else {
+        jQuery('#top').fadeOut("fast");
     }
 }
 

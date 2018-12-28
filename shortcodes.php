@@ -1,117 +1,50 @@
 <?php
 
 
-function sc_headerbanner( $atts, $content = null ) {
-	$a = shortcode_atts( array(
-		'number' => 0,
-		'text'   => ''
-	), $atts );
+function sc_headerbanner($atts, $content = null)
+{
+    $a = shortcode_atts(array(
+        'number' => 0,
+        'text' => ''
+    ), $atts);
 
-	return "
+    return "
 <div>
 	<div class='pad30 green_buffer'>
 		<h3 style='text-align: center; text-transform: uppercase;'>
 		<span style='font-size: 80px; padding: 0 10px; font-family: 'Poppins',sans-serif; top: 1vh; position: relative;'>"
-	       . $a['number'] .
-	       '</span>' .
-	       $a['text'] . '</h3>
+        . $a['number'] .
+        '</span>' .
+        $a['text'] . '</h3>
 		</div>
 </div>';
 }
 
-function sc_about( $atts, $content = null ) {
-	$a = shortcode_atts( array(
-		'title' => 'About Us',
-		'text'  => 'something about us',
-		'image' => 'wp-content/themes/tooba/images/temp/story.jpg'
-	), $atts );
+function sc_about($atts, $content = null)
+{
+    $a = shortcode_atts(array(
+        'title' => 'About Us',
+        'text' => 'something about us',
+        'image' => 'wp-content/themes/tooba/images/temp/story.jpg',
+        'anchor' => 'about',
+    ), $atts);
 
-	return '<div class="row">
+    return '<div class="row" data-anchor="' . $a['anchor'] . '" >
                     <div class="col about" style="">
-                    	<div class="stretchto leftstretch" target="aboutus" style="background-image: url('. $a['image'] . ')"></div>
+                    	<div class="stretchto leftstretch" target="aboutus" style="background-image: url(' . $a['image'] . ')"></div>
                     	<div id="aboutus" class="col-md-6">
 	                        <div class="section-title left">
 	                            <h3>' . $a['title'] . '</h3>
 	                        </div>
 	                        <p>' . $a['text'] . '</p>
-	                        <div class="feature-list" style="margin-top: 40px; display: none;">
-	                                <div class="col-md-6">
-	                                    <div class="feature-2">
-	                                        <div class="media">
-	                                            <div class="media-left">
-	                                                <div class="feature-icon text-center">
-	                                                    <i class="flaticon-sofa-1"></i>
-	                                                </div>
-	                                            </div>
-	                                            <div class="media-body">
-	                                                <a href="#">
-	                                                    <h3 class="media-heading">Dependable</h3>
-	                                                </a>
-	                                                <p>Nulla facilisi curabitur iaculisacc aug, ex ea commodo conse.</p>
-	                                            </div>
-	                                        </div>
-	                                    </div>
-	                                </div>
-	                                <div class="col-md-6">
-	                                    <div class="feature-2">
-	                                        <div class="media">
-	                                            <div class="media-left">
-	                                                <div class="feature-icon text-center">
-	                                                    <i class="flaticon-bookshelf"></i>
-	                                                </div>
-	                                            </div>
-	                                            <div class="media-body">
-	                                                <a href="#">
-	                                                    <h3 class="media-heading">Organized</h3>
-	                                                </a>
-	                                                <p>Nulla facilisi curabitur iaculisacc aug, ex ea commodo conse.</p>
-	                                            </div>
-	                                        </div>
-	                                    </div>
-	                                </div>
-	                                <div class="col-md-12" style="display: none; ">&nbsp;
-	                                    <div class="skill-section" style="">
-	                                        <div class="skill-shortcode">
-	                                            <div class="skill">
-	                                                <span class="skill-name">Web Design</span>          
-	                                                <div class="progress">
-	                                                    <div class="progress-bar" role="progressbar" data-percentage="65" style="transition: width 3s; width: 65%;">
-	                                                        <span class="progress-bar-percentage pull-right"><span class="count">65</span> %</span>
-	                                                    </div>
-	                                                </div>  
-	                                            </div>
-	                                        </div>
-	                                        <div class="skill-shortcode">
-	                                            <div class="skill">
-	                                                <span class="skill-name">Joomla</span>          
-	                                                <div class="progress">
-	                                                    <div class="progress-bar" role="progressbar" data-percentage="95" style="transition: width 3s; width: 95%;">
-	                                                        <span class="progress-bar-percentage pull-right"><span class="count">95</span> %</span>
-	                                                    </div>
-	                                                </div>  
-	                                            </div>
-	                                        </div>
-	                                        <div class="skill-shortcode">
-	                                            <div class="skill">
-	                                                <span class="skill-name">WordPress</span>          
-	                                                <div class="progress">
-	                                                    <div class="progress-bar" role="progressbar" data-percentage="60" style="transition: width 3s; width: 60%;">
-	                                                        <span class="progress-bar-percentage pull-right"><span class="count">60</span> %</span>
-	                                                    </div>
-	                                                </div> 
-	                                            </div>                                            
-	                                        </div>             
-	                                    </div>                        
-	                            </div>                                                                                   
-	                        </div>
-						</div>   
-						                                                                 
+						</div>   						                                                                 
                     </div>                       
                 </div>';
 }
 
-function sc_counter() {
-	return '<div class="row green_buffer">
+function sc_counter()
+{
+    return '<div class="row green_buffer">
                             <div class="col counter">
                                 <div class="animated-counter text-center white">
                                     <div class="animated-number" data-from="0" data-to="125">12</div>
@@ -133,116 +66,13 @@ function sc_counter() {
                         </div>';
 }
 
-function sc_productfeed( $atts, $content = null ) {
-	$a = shortcode_atts( array(
-		'title' => 'Our Products'
-	), $atts );
-	if($a['title'] == "Our Elite Products"){
-		$img = 'wp-content/themes/tooba/images/temp/elite/';
-	}
-	else{
-		$img = 'wp-content/themes/tooba/images/temp/commercial/';
-	}
-
-
-
-	return '<section class="pad-t80 pad-b50">
-            <div class="container">
-                <div class="row">	
-                    <div class="col-md-8">
-                        <div class="section-title text-center">
-                            <h3>' . $a['title'] . '</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-8">
-                    <div class="portfolio-box">
-                        <div class="col-md-4 col-sm-6 bedroom">
-                            <div class="portfolio-post mb30">
-                                <img src="'.$img.'1.jpg" alt="">
-                                <div class="hover-box">
-                                    <div class="inner-hover">
-                                        <h4>Portfolio Title</h4>
-                                        <a class="link" href="single-project.html"><i class="fa fa-search"></i></a>
-                                        <a class="zoom" href="assets/images/portfolio/interior-11.jpg" data-lightbox="portfolio-1"><i class="fa fa-picture-o"></i></a>
-                                    </div>                      
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6 living">
-                            <div class="portfolio-post mb30">
-                                <img src="'.$img.'2.jpg" alt="">
-                                <div class="hover-box">
-                                    <div class="inner-hover">
-                                        <h4>Portfolio Title</h4>
-                                        <a class="link" href="single-project.html"><i class="fa fa-search"></i></a>
-                                        <a class="zoom" href="assets/images/portfolio/interior-9.jpg" data-lightbox="portfolio-1"><i class="fa fa-picture-o"></i></a>
-                                    </div>                      
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6 bathroom">
-                            <div class="portfolio-post mb30">
-                                <img src="'.$img.'3.jpg" alt="">
-                                <div class="hover-box">
-                                    <div class="inner-hover">
-                                        <h4>Portfolio Title</h4>
-                                        <a class="link" href="single-project.html"><i class="fa fa-search"></i></a>
-                                        <a class="zoom" href="assets/images/portfolio/interior-2.jpg" data-lightbox="portfolio-1"><i class="fa fa-picture-o"></i></a>
-                                    </div>                      
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6 bedroom living">
-                            <div class="portfolio-post mb30">
-                                <img src="'.$img.'4.jpg" alt="">
-                                <div class="hover-box">
-                                    <div class="inner-hover">
-                                        <h4>Portfolio Title</h4>
-                                        <a class="link" href="single-project.html"><i class="fa fa-search"></i></a>
-                                        <a class="zoom" href="assets/images/portfolio/interior-4.jpg" data-lightbox="portfolio-1"><i class="fa fa-picture-o"></i></a>
-                                    </div>                      
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6 bedroom bathroom">
-                            <div class="portfolio-post mb30">
-                                <img src="'.$img.'5.jpg" alt="">
-                                <div class="hover-box">
-                                    <div class="inner-hover">
-                                        <h4>Portfolio Title</h4>
-                                        <a class="link" href="single-project.html"><i class="fa fa-search"></i></a>
-                                        <a class="zoom" href="assets/images/portfolio/interior-5.jpg" data-lightbox="portfolio-1"><i class="fa fa-picture-o"></i></a>
-                                    </div>                      
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6 bathroom living">
-                            <div class="portfolio-post mb30">
-                                <img src="'.$img.'6.jpg" alt="">
-                                <div class="hover-box">
-                                    <div class="inner-hover">
-                                        <h4>Portfolio Title</h4>
-                                        <a class="link" href="single-project.html"><i class="fa fa-search"></i></a>
-                                        <a class="zoom" href="assets/images/portfolio/interior-6.jpg" data-lightbox="portfolio-1"><i class="fa fa-picture-o"></i></a>
-                                    </div>                      
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-            		<div class="col-md-12">
-					&nbsp;
-					</div>            
-                </div>
-            </div>
-        </section>';
-}
-
-function sc_team( $atts, $content = null ) {
-	$a = shortcode_atts( array(
-		'title' => 'Our Products'
-	), $atts );
-	return '<section class="pad-t80 pad-b50">
+function sc_team($atts, $content = null)
+{
+    $a = shortcode_atts(array(
+        'title' => 'Our Products',
+        'anchor' => 'ourteam'
+    ), $atts);
+    return '<section class="pad-t80 pad-b50" data-anchor="' . $a['anchor'] . '">
             <div class="container">
                 <div class="row">
                     <div class="col-md-8">
@@ -330,12 +160,14 @@ function sc_team( $atts, $content = null ) {
         </section>';
 }
 
-function sc_contact( $atts, $content = null ) {
-	$a = shortcode_atts( array(
-		'title' => 'Contact Us',
-		'image' => 'wp-content/themes/tooba/images/temp/contact.jpg'
-	), $atts );
-	return '<div class="row col col" style="padding-right: 40px;">
+function sc_contact($atts, $content = null)
+{
+    $a = shortcode_atts(array(
+        'title' => 'Contact Us',
+        'image' => 'wp-content/themes/tooba/images/temp/contact.jpg',
+        'anchor' => 'contactus'
+    ), $atts);
+    return '<div class="row col col" style="padding-right: 40px;" data-anchor="' . $a['anchor'] . '"> 
 				<div class="col-md-6 contact" id="contactus">
                         <div class="section-title left">
                             <h3 class="col-md-12">' . $a['title'] . '</h3>
@@ -399,15 +231,17 @@ function sc_contact( $atts, $content = null ) {
                             <div id="msgSubmit" class="h3 text-center hidden"></div>
                         </form>                        
                 </div>
-                <div class="stretchto rightstretch" target="contactus" style="background-image: url('. $a['image'] . ')"></div>
+                <div class="stretchto rightstretch" target="contactus" style="background-image: url(' . $a['image'] . ')"></div>
                 </div>';
 }
 
-function sc_news( $atts, $content = null ) {
-	$a = shortcode_atts( array(
-		'title' => 'Latest News'
-	), $atts );
-	return '<section class="pad-t80 pad-b50">
+function sc_news($atts, $content = null)
+{
+    $a = shortcode_atts(array(
+        'title' => 'Latest News',
+        'anchor' => 'inthenews'
+    ), $atts);
+    return '<section class="pad-t80 pad-b50" data-anchor="' . $a['anchor'] . '">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -437,11 +271,13 @@ function sc_news( $atts, $content = null ) {
         </section>';
 }
 
-function sc_testimonials( $atts, $content = null ) {
-	$a = shortcode_atts( array(
-		'title' => 'What Our Customers Are Saying'
-	), $atts );
-	return '<section class="pad80 parallax" style="background-image: url(assets/images/bg/interior-bg-2.jpg);">
+function sc_testimonials($atts, $content = null)
+{
+    $a = shortcode_atts(array(
+        'title' => 'What Our Customers Are Saying',
+        'anchor' => 'ourcustomers'
+    ), $atts);
+    return '<section class="pad80 parallax" style="background-image: url(assets/images/bg/interior-bg-2.jpg);" data-anchor="' . $a['anchor'] . '">
             <div class="container">
                 <div class="row">
                     <div class="section-title text-center white">
@@ -500,11 +336,12 @@ function sc_testimonials( $atts, $content = null ) {
         </section>';
 }
 
-function sc_footer( $atts, $content = null ) {
-	$a = shortcode_atts( array(
-		'title' => 'Our Products'
-	), $atts );
-	return '<section class="footer-section pad-t80 pad-b30 parallax" style="background-image: url(assets/images/bg/footer-bg.jpg); background-position: 50% 20%;">
+function sc_footer($atts, $content = null)
+{
+    $a = shortcode_atts(array(
+        'title' => 'Our Products'
+    ), $atts);
+    return '<section class="footer-section pad-t80 pad-b30 parallax" style="background-image: url(assets/images/bg/footer-bg.jpg); background-position: 50% 20%;">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">&nbsp;</div>                

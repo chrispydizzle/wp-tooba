@@ -13,14 +13,15 @@ function tooba_catalog( $atts ) {
 		shortcode_atts( array(
 			'id'    => '1',
 			'title' => 'Our Products',
-			'type'  => 'Corporate'
+			'type'  => 'Corporate',
+            'anchor' => 'catalog',
 		),
 			$atts ) );
 
 	$Catalogue      = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM $catalogues_table_name WHERE Catalogue_ID=%d", $atts['id'] ) );
 	$CatalogueItems = $wpdb->get_results( "SELECT * FROM $catalogue_items_table_name WHERE Catalogue_ID=" . $Catalogue->Catalogue_ID . ' ORDER BY Position' );
 
-	$ContainerTop = '<section class="pad-t80 pad-b50">
+	$ContainerTop = '<section class="pad-t80 pad-b50" data-anchor="'.$atts['anchor'].'">
             <div class="container">
                 <div class="row">	
                     <div class="col-md-8">
@@ -43,11 +44,11 @@ function tooba_catalog( $atts ) {
 
 		$OutstringContainer .= '<div class="col-md-4 col-sm-6 product ' . $DisplayClass . '" data-description="' . $Product->Get_Description() . '" data-id="' . $Product->Get_Item_ID() . '" data-date="' . $Product->Get_Created_Date() . '" data-order="' . $Governer . '">
                             <div class="portfolio-post mb30">
-                                <img src="' . $Product->JustGetLink() . '" alt="">
+                                <img src="' . $Product->GetMassagedLink() . '" alt="">
                                 <div class="hover-box">
                                     <div class="inner-hover">
+                                        <a class="popout">&nbsp;</a>                                    
                                         <h4>' . $Product->Get_Product_Name() . '</h4>
-                                        <a class="popout">&nbsp;</a>
                                         <div style="display: none" id="fcont' . $Product->Get_Item_ID() . '" data-order="' . $Governer . '"></div>
                                     </div>                      
                                 </div>

@@ -1,35 +1,33 @@
 <?php
 
 
-function sc_headerbanner($atts, $content = null)
-{
-    $a = shortcode_atts(array(
-        'number' => 0,
-        'text' => ''
-    ), $atts);
+function sc_headerbanner( $atts, $content = null ) {
+	$a = shortcode_atts( array(
+		'number' => 0,
+		'text'   => ''
+	), $atts );
 
-    return "
+	return "
 <div>
 	<div class='pad30 green_buffer'>
 		<h3 style='text-align: center; text-transform: uppercase;'>
 		<span style='font-size: 80px; padding: 0 10px; font-family: 'Poppins',sans-serif; top: 1vh; position: relative;'>"
-        . $a['number'] .
-        '</span>' .
-        $a['text'] . '</h3>
+	       . $a['number'] .
+	       '</span>' .
+	       $a['text'] . '</h3>
 		</div>
 </div>';
 }
 
-function sc_about($atts, $content = null)
-{
-    $a = shortcode_atts(array(
-        'title' => 'About Us',
-        'text' => 'something about us',
-        'image' => 'wp-content/themes/tooba/images/temp/story.jpg',
-        'anchor' => 'about',
-    ), $atts);
+function sc_about( $atts, $content = null ) {
+	$a = shortcode_atts( array(
+		'title'  => 'About Us',
+		'text'   => 'something about us',
+		'image'  => 'wp-content/themes/tooba/images/temp/story.jpg',
+		'anchor' => 'about',
+	), $atts );
 
-    return '<div class="row" data-anchor="' . $a['anchor'] . '" >
+	return '<div class="row" data-anchor="' . $a['anchor'] . '" >
                     <div class="col about" style="">
                     	<div class="stretchto leftstretch" target="aboutus" style="background-image: url(' . $a['image'] . ')"></div>
                     	<div id="aboutus" class="col-md-6">
@@ -42,37 +40,43 @@ function sc_about($atts, $content = null)
                 </div>';
 }
 
-function sc_counter()
-{
-    return '<div class="row green_buffer">
-                            <div class="col counter">
-                                <div class="animated-counter text-center white">
-                                    <div class="animated-number" data-from="0" data-to="125">12</div>
-                                    <h4>Completed<br> Projects</h4>
-                                </div>
-                            </div>
-                            <div class="col counter">
-                                <div class="animated-counter text-center white">
-                                    <div class="animated-number" data-from="0" data-to="5786">150</div>
-                                    <h4>Pieces<br> Ordered</h4>
-                                </div>
-                            </div>
-                            <div class="col counter">
-                                <div class="animated-counter text-center white">
-                                    <div class="animated-number" data-from="0" data-to="355">55</div>
-                                    <h4>Happy<br> Clients</h4>
-                                </div>
-                            </div>
-                        </div>';
+function sc_pillars( $atts ) {
+	$a = shortcode_atts( array(
+		'title'     => 'Strong Pillars of Tooba',
+		'leftnode'  => 'something on the left',
+		'leftimg'   => 'wp-content/themes/tooba/images/halal.png',
+		'rightnode' => 'the right',
+		'rightimg'  => 'wp-content/themes/tooba/images/sawboard.png',
+	), $atts );
+
+	return '<div class="row green_buffer pillar">
+				<!-- <div class="row pillar"> -->
+					<div class="col-md-12"><h1>' . $a['title'] . '</h1></div>
+				<!-- </div> -->
+				<!-- <div class="row pillar"> -->
+                <div class="col-md-3 centerimage">
+                    <img class="" src="' . $a['leftimg'] . '" />
+                </div>
+                <div class="col-md-3">
+                    <div>' . $a['leftnode'] . '</div>
+                </div>
+                <div class="col-md-3 centerimage">
+                    <img class="" src="' . $a['rightimg'] . '" />
+                </div>
+                <div class="col-md-3">
+                    <div>' . $a['rightnode'] . '</div>
+                </div>
+                <!-- </div> -->
+            </div>';
 }
 
-function sc_team($atts, $content = null)
-{
-    $a = shortcode_atts(array(
-        'title' => 'Our Products',
-        'anchor' => 'ourteam'
-    ), $atts);
-    return '<section class="pad-t80 pad-b50" data-anchor="' . $a['anchor'] . '">
+function sc_team( $atts, $content = null ) {
+	$a = shortcode_atts( array(
+		'title'  => 'Our Products',
+		'anchor' => 'ourteam'
+	), $atts );
+
+	return '<section class="pad-t80 pad-b50" data-anchor="' . $a['anchor'] . '">
             <div class="container">
                 <div class="row">
                     <div class="col-md-8">
@@ -160,14 +164,14 @@ function sc_team($atts, $content = null)
         </section>';
 }
 
-function sc_contact($atts, $content = null)
-{
-    $a = shortcode_atts(array(
-        'title' => 'Contact Us',
-        'image' => 'wp-content/themes/tooba/images/temp/contact.jpg',
-        'anchor' => 'contactus'
-    ), $atts);
-    return '<div class="row col col" style="padding-right: 40px;" data-anchor="' . $a['anchor'] . '"> 
+function sc_contact( $atts, $content = null ) {
+	$a = shortcode_atts( array(
+		'title'  => 'Contact Us',
+		'image'  => 'wp-content/themes/tooba/images/temp/contact.jpg',
+		'anchor' => 'contactus'
+	), $atts );
+
+	return '<div class="row col col" style="padding-right: 40px;" data-anchor="' . $a['anchor'] . '"> 
 				<div class="col-md-6 contact" id="contactus">
                         <div class="section-title left">
                             <h3 class="col-md-12">' . $a['title'] . '</h3>
@@ -235,13 +239,13 @@ function sc_contact($atts, $content = null)
                 </div>';
 }
 
-function sc_news($atts, $content = null)
-{
-    $a = shortcode_atts(array(
-        'title' => 'Latest News',
-        'anchor' => 'inthenews'
-    ), $atts);
-    return '<section class="pad-t80 pad-b50" data-anchor="' . $a['anchor'] . '">
+function sc_news( $atts, $content = null ) {
+	$a = shortcode_atts( array(
+		'title'  => 'Latest News',
+		'anchor' => 'inthenews'
+	), $atts );
+
+	return '<section class="pad-t80 pad-b50" data-anchor="' . $a['anchor'] . '">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -271,13 +275,13 @@ function sc_news($atts, $content = null)
         </section>';
 }
 
-function sc_testimonials($atts, $content = null)
-{
-    $a = shortcode_atts(array(
-        'title' => 'What Our Customers Are Saying',
-        'anchor' => 'ourcustomers'
-    ), $atts);
-    return '<section class="pad80 parallax" style="background-image: url(assets/images/bg/interior-bg-2.jpg);" data-anchor="' . $a['anchor'] . '">
+function sc_testimonials( $atts, $content = null ) {
+	$a = shortcode_atts( array(
+		'title'  => 'What Our Customers Are Saying',
+		'anchor' => 'ourcustomers'
+	), $atts );
+
+	return '<section class="pad80 parallax" style="background-image: url(assets/images/bg/interior-bg-2.jpg);" data-anchor="' . $a['anchor'] . '">
             <div class="container">
                 <div class="row">
                     <div class="section-title text-center white">
@@ -336,12 +340,12 @@ function sc_testimonials($atts, $content = null)
         </section>';
 }
 
-function sc_footer($atts, $content = null)
-{
-    $a = shortcode_atts(array(
-        'title' => 'Our Products'
-    ), $atts);
-    return '<section class="footer-section pad-t80 pad-b30 parallax" style="background-image: url(assets/images/bg/footer-bg.jpg); background-position: 50% 20%;">
+function sc_footer( $atts, $content = null ) {
+	$a = shortcode_atts( array(
+		'title' => 'Our Products'
+	), $atts );
+
+	return '<section class="footer-section pad-t80 pad-b30 parallax" style="background-image: url(assets/images/bg/footer-bg.jpg); background-position: 50% 20%;">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">&nbsp;</div>                

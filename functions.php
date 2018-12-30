@@ -83,7 +83,7 @@ function add_shortcodes()
 {
     add_shortcode('about_page', 'sc_about');
     add_shortcode('header_banner', 'sc_headerbanner');
-    add_shortcode('jazzy_counter', 'sc_counter');
+    add_shortcode('pillars', 'sc_pillars');
     add_shortcode('productfeed', 'sc_productfeed');
     add_shortcode('team', 'sc_team');
     add_shortcode('contact_us', 'sc_contact');

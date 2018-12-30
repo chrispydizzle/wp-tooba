@@ -42,39 +42,6 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Poppins", sans-serif;
 }
 
-ul.menu {
-  display: block;
-  float: right;
-  height: 100%;
-  margin-right: 0;
-  width: 80%;
-
-  li {
-    color: $tooba_gray;
-    float: left;
-    font-size: 1.1vw;
-    font-weight: 600;
-    letter-spacing: 0;
-    line-height: 45px;
-    text-transform: uppercase;
-    margin: 40px 2% 0;
-  }
-
-  a {
-    text-decoration: none;
-    color: $tooba_gray;
-    @include transition(all .5s ease);
-
-    &:visited {
-      color: $tooba_gray;
-    }
-  }
-
-  a:hover {
-    color: $tooba_green;
-  }
-}
-
 .leftstretch {
   background-position-x: right;
 
@@ -114,6 +81,78 @@ ul.menu {
 
   .showme, .showme img {
     opacity: 1;
+  }
+}
+
+@media screen and (min-width: 1024px){
+  .navbar {
+    .navbar-default {
+      @include transition(all, .2s, ease-in-out);
+      background: $bg;
+      border: 0;
+      border-radius: 0;
+      margin-bottom: 0;
+    }
+
+    .container {
+      height: 80px;
+      padding: 1vh 0 1% 0;
+      width: 99%;
+    }
+  }
+
+  .menu-main-menu-container {
+    margin: 0 0 0 10%;
+    text-align: center;
+  }
+
+  .navbar-header {
+    float: left;
+    margin-left: 0;
+    margin-right: 0;
+    max-height: 80px;
+    width: 15vw;
+
+    .custom-logo-link {
+      margin: 0 0 0 3vw;
+    }
+  }
+
+
+  ul.menu {
+    float: right;
+    margin-right: 0;
+    width: 80vw;
+
+    li {
+      float: left;
+      font-size: 1.1em;
+      line-height: 45px;
+      margin: 40px 1% 0;
+    }
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .navbar-header {
+    height: 10vh;
+    text-align: center;
+
+    img.custom-logo {
+      height: 100%;
+      width: auto;
+    }
+  }
+
+  ul.menu {
+    width: 100%;
+    border-top: 1px $tooba_gray solid;
+    margin-top: 1vh;
+    padding-top: 1vh;
+
+    li {
+      text-align: center;
+    }
   }
 }
 
@@ -161,6 +200,13 @@ ul.menu {
     margin: 0 2%;
     padding: 0;
   }
+
+  .pillar {
+    .col-md-3 {
+      max-width: 46%;
+      margin-left: 0.5%;
+    }
+  }
 }
 
 @media screen and (min-width: 768px) {
@@ -177,44 +223,7 @@ ul.menu {
     }
   }
 
-  .navbar {
-    .navbar-default {
-      @include transition(all, .2s, ease-in-out);
-      background: $bg;
-      border: 0;
-      border-radius: 0;
-      margin-bottom: 0;
-    }
-
-    .container {
-      height: 80px;
-      padding: 1vh 0 1% 0;
-      width: 99%;
-    }
-  }
-
-  .menu-main-menu-container {
-    margin: 0 0 0 10%;
-    text-align: center;
-  }
-
-  .navbar-header {
-    float: left;
-    margin-left: 0;
-    margin-right: 0;
-    max-height: 80px;
-    width: 25%;
-
-    .custom-logo-link {
-      margin: 0 0 0 50%;
-    }
-  }
-
   .col-md-6 {
-    &:after {
-      content: '\200b';
-    }
-
     max-width: 45%;
     min-height: 1px;
     width: 100%;
@@ -222,6 +231,14 @@ ul.menu {
     height: 100%;
     margin: 0 2%;
     padding: 0;
+  }
+
+  .pillar {
+    .col-md-3 {
+      max-width: 24%;
+      width: 25%;
+      margin: 0 .25%;
+    }
   }
 
   .stretchto {
@@ -263,6 +280,33 @@ ul.menu {
       max-height: 450px;
     }
 
+  }
+
+}
+
+ul.menu {
+  display: block;
+  height: 100%;
+
+  li {
+    color: $tooba_gray;
+    letter-spacing: 0;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  a {
+    text-decoration: none;
+    color: $tooba_gray;
+    @include transition(all .5s ease);
+
+    &:visited {
+      color: $tooba_gray;
+    }
+
+    &:hover {
+      color: $tooba_green;
+    }
   }
 }
 
@@ -326,6 +370,41 @@ h3 {
 
 .pad30 {
   padding: 7vh 0 5vh 0;
+}
+
+.pillar {
+  padding: 1em 0;
+  color: rgb(255, 255, 255);
+
+  h1 {
+    font-size: 30px;
+    text-align: center;
+    padding: 1em 0;
+    text-transform: uppercase;
+  }
+
+  .col-md-3 {
+    vertical-align: middle;
+
+
+    div {
+      vertical-align: middle;
+    }
+
+    &.centerimage {
+      text-align: center;
+    }
+
+    img {
+      &.floatleft {
+        float: left;
+      }
+
+      &.floatright {
+        float: right;
+      }
+    }
+  }
 }
 
 .green_buffer {

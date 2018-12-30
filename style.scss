@@ -1107,15 +1107,16 @@ h3 {
         -o-transition: all 0.5s;
         transition: all 0.5s;
       }
-
     }
   }
 
   .latest-news-img {
     position: relative;
+    text-align: center;
 
     img {
       width: 100%;
+      height: auto;
     }
 
     div {

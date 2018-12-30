@@ -47,7 +47,7 @@ function sc_pillars( $atts ) {
 		'leftimg'   => 'wp-content/themes/tooba/images/halal.png',
 		'rightnode' => 'the right',
 		'rightimg'  => 'wp-content/themes/tooba/images/sawboard.png',
-		'anchor' => 'pillars'
+		'anchor'    => 'pillars'
 	), $atts );
 
 	return '<div class="row green_buffer pillar" data-anchor="' . $a['anchor'] . '">
@@ -243,9 +243,31 @@ function sc_contact( $atts, $content = null ) {
 function sc_news( $atts, $content = null ) {
 	$a = shortcode_atts( array(
 		'title'  => 'Latest News',
-		'anchor' => 'inthenews'
+		'anchor' => 'inthenews',
+		'slug'   => 'news'
 	), $atts );
 
+	$args = array(
+		'category'    => $a['slug'],
+		'post_type'   => 'post',
+		'post_status' => 'publish',
+		'numberposts' => 1
+	);
+
+	$my_posts = get_posts( $args );
+	if ( count( $my_posts ) == 0 ) {
+		return '<section class="pad-t80 pad-b50" data-anchor="' . $a['anchor'] . '">
+<div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+No news found.
+</div></div></div>
+</section>';
+	}
+
+	$my_posts = $my_posts[0];
+	$thumbid = get_post_meta( $my_posts->ID, '_thumbnail_id', true );
+	$image = wp_get_attachment_image($thumbid, 'full');
 	return '<section class="pad-t80 pad-b50" data-anchor="' . $a['anchor'] . '">
             <div class="container">
                 <div class="row">
@@ -259,16 +281,11 @@ function sc_news( $atts, $content = null ) {
                     <div class="col-md-8">
                         <div class="latest-news">
                             <div class="latest-news-img">
-                                <img src="assets/images/blog/latest-blog-1.jpg" class="img-responsive" alt="blog-post">
-                                <div><span>JUNE</span><span>29</span></div>
+                                '.$image.'
+                                <div><span>' . $my_posts->post_date . '</span></div>
                             </div>
-                            <div class="comment">
-                                <p>Posted In: <span>Business, Blog</span></p>
-                                <p><span><a href="index.html#"><i class="fa fa-comments"></i></a> 15</span>
-                                   <span><a href="index.html#"><i class="fa fa-eye"></i></a> 11</span></p>
-                            </div>
-                            <h4><a href="index.html#">Lorem Ipsum is dummy text of type setting industry.</a></h4>
-                            <p>Vivamus magna justo, lacinia eget consectetur convallis at tellus. Lorem ipsum dolor sit consectetur adipiscing elit</p>
+                            <h4>' . $my_posts->post_title . '</h4>
+                            <p>' . $my_posts->post_content . '</p>
                         </div>
                     </div>
                 </div>

@@ -2,14 +2,13 @@ jQuery(document).ready(function () {
 //     jQuery('body').append("<div id='top' style='bottom: -2vh;'></div>");
     adjust();
 
-    jQuery('.portfolio-post').on('mouseenter touchstart', function (f) {
+    jQuery('.portfolio-post').on('mouseover touchstart', function (f) {
         var popoutTarget = jQuery(this).find('.popoutcontainer');
         var h4target = jQuery(this).find('h4');
         var boxtarget = jQuery(this).find('.hover-box');
         TweenMax.to(popoutTarget, .5, {bottom: '60px', ease: Power2.easeInOut});
         TweenMax.to(h4target, .5, {top: '40px', ease: Power2.easeInOut});
         TweenMax.to(boxtarget, .5, {opacity: '.9', ease: Power2.easeInOut});
-        console.log('over ' + f);
     }).on('mouseleave touchend', function (f) {
         var popoutTarget = jQuery(this).find('.popoutcontainer');
         var h4target = jQuery(this).find('h4');
@@ -18,7 +17,6 @@ jQuery(document).ready(function () {
         TweenMax.to(popoutTarget, .25, {bottom: '100%', ease: Power2.easeInOut});
         TweenMax.to(h4target, .25, {top: '100%', ease: Power2.easeInOut});
         TweenMax.to(boxtarget, .25, {opacity: '0', ease: Power2.easeInOut});
-        console.log('leave ' + f);
     });
 
     jQuery(window).resize(function () {

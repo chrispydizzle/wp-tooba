@@ -47,9 +47,10 @@ function sc_pillars( $atts ) {
 		'leftimg'   => 'wp-content/themes/tooba/images/halal.png',
 		'rightnode' => 'the right',
 		'rightimg'  => 'wp-content/themes/tooba/images/sawboard.png',
+		'anchor' => 'pillars'
 	), $atts );
 
-	return '<div class="row green_buffer pillar">
+	return '<div class="row green_buffer pillar" data-anchor="' . $a['anchor'] . '">
 				<!-- <div class="row pillar"> -->
 					<div class="col-md-12"><h1>' . $a['title'] . '</h1></div>
 				<!-- </div> -->

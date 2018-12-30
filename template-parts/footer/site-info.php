@@ -10,5 +10,7 @@
 
 ?>
 <div class="site-info">
-	Produced by <a href="https://cpsharp.net">CP Sharp</a>.
-</div><!-- .site-info -->
+    <div class="col-md-12">
+        Produced by <a href="https://cpsharp.net">CP Sharp</a>
+    </div><!-- .site-info -->
+</div>

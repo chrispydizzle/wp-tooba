@@ -19,6 +19,14 @@ jQuery(document).ready(function () {
         TweenMax.to(boxtarget, .25, {opacity: '0', ease: Power2.easeInOut});
     });
 
+    jQuery('.lb-outerContainer').touchwipe({
+        wipeLeft: function() { jQuery('.lb-next').click(); },
+        wipeRight: function() { jQuery('.lb-prev').click(); },
+        min_move_x: 20,
+        min_move_y: 20,
+        preventDefaultEvents: true
+    });
+
     jQuery(window).resize(function () {
         // adjust();
     });
@@ -103,7 +111,10 @@ function adjust() {
         let titem = jQuery(tid[i]);
         let t = jQuery('#' + titem.attr('target'));
         let theight = t.height() + 40;
+        let oheight = titem.height()+40;
+        theight = theight > oheight ? theight : oheight;
         titem.height(theight);
+        t.height(theight);
         if (jQuery(window).width() < 769) {
             t.parent().height(theight * 2);
         } else {

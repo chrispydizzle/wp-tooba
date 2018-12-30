@@ -172,71 +172,69 @@ function sc_contact( $atts, $content = null ) {
 		'anchor' => 'contactus'
 	), $atts );
 
-	return '<div class="row col col" style="padding-right: 40px;" data-anchor="' . $a['anchor'] . '"> 
+	return '<div class="row col col shaded" style="padding: 0 0;" data-anchor="' . $a['anchor'] . '"> 
 				<div class="col-md-6 contact" id="contactus">
-                        <div class="section-title left">
-                            <h3 class="col-md-12">' . $a['title'] . '</h3>
-                        </div>
-                        <form id="quotation" class="quotation-form">
-                            <div class="row">
-                                <div class="col-md-6 col-sm-6">
-                                    <div class="form-group">
-                                        <input name="name" class="form-control" id="name" type="text" placeholder="Your Name" required="required">
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-sm-6">
-                                    <div class="form-group">
-                                        <input name="email" class="form-control" id="email" type="text" placeholder="E-mail" required="required">
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-sm-6">
-                                    <div class="form-group">
-                                        <input name="phone" class="form-control" id="phone" type="text" placeholder="Your Phone" required="required">
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-sm-6">
-                                    <div class="form-group">
-                                        <input name="address" class="form-control" id="address" type="text" placeholder="Your Address" required="required">
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-sm-6">
-                                    <div class="form-group">
-                                        <select name="category" class="form-control" id="category" required="required">
-                                            <option value="" selected="selected">Category</option>
-                                            <option value="Apartment">Apartment</option>
-                                            <option value="Office">Office</option>
-                                            <option value="Kitchen">Kitchen</option>
-                                            <option value="Bathroom">Bathroom</option>
-                                            <option value="Drawing Room">Drawing Room</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-sm-6">
-                                    <div class="form-group">
-                                        <select name="room-no" class="form-control" id="room-no" required="required">
-                                            <option value="" selected="selected">Room No</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <textarea name="message" class="form-control" id="message" placeholder="Your Message" required="required" rows="6"></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                	<div>&nbsp;</div>
-                                    <button type="submit" class="btn btn-primary" id="submit">Submit</button>
-                                </div>
-                            </div>
-                            <div id="msgSubmit" class="h3 text-center hidden"></div>
-                        </form>                        
-                </div>
-                <div class="stretchto rightstretch" target="contactus" style="background-image: url(' . $a['image'] . ')"></div>
+                        <div class="section-title left col-md-12">
+                            <h3>' . $a['title'] . '</h3>
+	                        <form id="quotation" class="quotation-form">
+	                                <div class="col-md-6 col-sm-6">
+	                                    <div class="form-group">
+	                                        <input name="name" class="form-control" id="name" type="text" placeholder="Your Name" required="required">
+	                                    </div>
+	                                </div>
+	                                <div class="col-md-6 col-sm-6">
+	                                    <div class="form-group">
+	                                        <input name="email" class="form-control" id="email" type="text" placeholder="E-mail" required="required">
+	                                    </div>
+	                                </div>
+	                                <div class="col-md-6 col-sm-6">
+	                                    <div class="form-group">
+	                                        <input name="phone" class="form-control" id="phone" type="text" placeholder="Your Phone" required="required">
+	                                    </div>
+	                                </div>
+	                                <div class="col-md-6 col-sm-6">
+	                                    <div class="form-group">
+	                                        <input name="address" class="form-control" id="address" type="text" placeholder="Your Address" required="required">
+	                                    </div>
+	                                </div>
+	                                <div class="col-md-6 col-sm-6">
+	                                    <div class="form-group">
+	                                        <select name="category" class="form-control" id="category" required="required">
+	                                            <option value="" selected="selected">Category</option>
+	                                            <option value="Apartment">Apartment</option>
+	                                            <option value="Office">Office</option>
+	                                            <option value="Kitchen">Kitchen</option>
+	                                            <option value="Bathroom">Bathroom</option>
+	                                            <option value="Drawing Room">Drawing Room</option>
+	                                        </select>
+	                                    </div>
+	                                </div>
+	                                <div class="col-md-6 col-sm-6">
+	                                    <div class="form-group">
+	                                        <select name="room-no" class="form-control" id="room-no" required="required">
+	                                            <option value="" selected="selected">Room No</option>
+	                                            <option value="1">1</option>
+	                                            <option value="2">2</option>
+	                                            <option value="3">3</option>
+	                                            <option value="4">4</option>
+	                                            <option value="5">5</option>
+	                                        </select>
+	                                    </div>
+	                                </div>
+	                                <div class="col-md-12">
+	                                    <div class="form-group">
+	                                        <textarea name="message" class="form-control" id="message" placeholder="Your Message" required="required" rows="6"></textarea>
+	                                    </div>
+	                                </div>
+	                                <div class="col-md-12">
+	                                    <div>&nbsp;</div>
+	                                    <button type="submit" class="btn btn-primary" id="submit">Submit</button>
+	                                </div>
+	                            <div id="msgSubmit" class="h3 text-center hidden"></div>
+	                        </form>
+	                                                </div>                        
+                	</div>
+               		<div class="rightstretch col-md-6 contact stretchto" target="contactus" style="background-image: url(' . $a['image'] . ')"></div>
                 </div>';
 }
 
@@ -256,7 +254,7 @@ function sc_news( $atts, $content = null ) {
 
 	$my_posts = get_posts( $args );
 	if ( count( $my_posts ) == 0 ) {
-		return '<section class="pad-t80 pad-b50" data-anchor="' . $a['anchor'] . '">
+		return '<section class="pad-t80 pad-b50 green_buffer" data-anchor="' . $a['anchor'] . '">
 <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -266,9 +264,10 @@ No news found.
 	}
 
 	$my_posts = $my_posts[0];
-	$thumbid = get_post_meta( $my_posts->ID, '_thumbnail_id', true );
-	$image = wp_get_attachment_image($thumbid, 'full');
-	return '<section class="pad-t80 pad-b50" data-anchor="' . $a['anchor'] . '">
+	$thumbid  = get_post_meta( $my_posts->ID, '_thumbnail_id', true );
+	$image    = wp_get_attachment_image( $thumbid, 'full' );
+
+	return '<section class="pad-t80 pad-b50 green_buffer" data-anchor="' . $a['anchor'] . '">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -278,15 +277,17 @@ No news found.
                     </div>
                 </div>
                 <div class="row owl-scroll">
-                    <div class="col-md-8">
-                        <div class="latest-news">
+                    <div class="col-md-12">
+                        <div class="latest-news col-md-6">
                             <div class="latest-news-img">
-                                '.$image.'
+                                ' . $image . '
                                 <div><span>' . $my_posts->post_date . '</span></div>
                             </div>
+                        </div>
+                        <div class="news-detail col-md-6">
                             <h4>' . $my_posts->post_title . '</h4>
                             <p>' . $my_posts->post_content . '</p>
-                        </div>
+						</div>
                     </div>
                 </div>
             </div>

@@ -150,11 +150,12 @@ function tooba_scripts()
 
     // wp_register_script('lightbox', get_theme_file_uri('/js/lightbox.js'));
 	wp_register_script( 'lightbox', get_theme_file_uri( '/js/lightbox.min.js' ) );
-    wp_register_script('cpsharp', get_theme_file_uri('/js/cpsharp.js'), ['greensock', 'lightbox']);
+	wp_register_script('jqtouchwipe', get_theme_file_uri('/js/jquery.touchwipe.1.1.1.js'));
+    wp_register_script('cpsharp', get_theme_file_uri('/js/cpsharp.js'), ['greensock', 'lightbox', 'jqtouchwipe']);
     wp_localize_script('cpsharp', 'serverhelp', array('ajax_url' => admin_url('admin-ajax.php')));
     wp_register_script('bootstrapjs', get_theme_file_uri('/js/bootstrap.min.js'), ['bootstrapbundle']);
 
-
+	wp_enqueue_script('jqtouchwipe');
 	wp_enqueue_script('greensock');
     wp_enqueue_script('lightbox');
 	wp_enqueue_script('greensockscroll');

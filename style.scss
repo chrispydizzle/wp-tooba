@@ -892,12 +892,14 @@ h3 {
     .inner-hover {
       position: absolute;
       width: 100%;
+      height: 100%;
 
       h4 {
         font-size: 18px;
         color: #ffffff;
         text-transform: uppercase;
-        @include transition(all 1s ease-in-out);
+        padding: 0 1em;
+        position: relative;
       }
 
       p {
@@ -912,18 +914,22 @@ h3 {
         transform: translate3d(0, 0, 0);
       }
 
+      .popoutcontainer {
+        width: 100%;
+        position: absolute;
+        text-align: center;
+      }
+
       a {
         display: inline-block;
         text-decoration: none;
-        @include transition(all 1s ease-in-out);
         width: 40px;
         height: 40px;
         -webkit-border-radius: 50%;
         border-radius: 50%;
         border: 1px solid #ffffff;
         text-align: center;
-        margin: 0 5px;
-        position: absolute;
+        position: relative;
         left: 0;
 
         &.link {

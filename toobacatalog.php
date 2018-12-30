@@ -47,8 +47,10 @@ function tooba_catalog( $atts ) {
                                 <img src="' . $Product->GetMassagedLink() . '" alt="">
                                 <div class="hover-box">
                                     <div class="inner-hover">
-                                        <a class="popout">&nbsp;</a>                                    
-                                        <h4>' . $Product->Get_Product_Name() . '</h4>
+                                    	<div class="popoutcontainer" style="bottom: 100%;">
+                                        <a class="popout">&nbsp;</a>
+                                        </div>                                    
+                                        <h4 style="top: 100%;">' . $Product->Get_Product_Name() . '</h4>
                                         <div style="display: none" id="fcont' . $Product->Get_Item_ID() . '" data-order="' . $Governer . '"></div>
                                     </div>                      
                                 </div>

@@ -2,6 +2,17 @@ jQuery(document).ready(function () {
 //     jQuery('body').append("<div id='top' style='bottom: -2vh;'></div>");
     adjust();
 
+    jQuery('.portfolio-post').hover(function(){
+        var popoutTarget = jQuery(this).find('.popoutcontainer');
+        var h4target = jQuery(this).find('h4');
+        TweenMax.to(popoutTarget, .5, {bottom: '60px', ease: Power2.easeInOut});
+        TweenMax.to(h4target, .5, {top: '40px', ease: Power2.easeInOut});
+    }, function(){
+        var popoutTarget = jQuery(this).find('.popoutcontainer');
+        var h4target = jQuery(this).find('h4');
+        TweenMax.to(popoutTarget, .25, {bottom: '100%', ease: Power2.easeInOut});
+        TweenMax.to(h4target, .25, {top: '100%', ease: Power2.easeInOut});
+    });
 
     jQuery(window).resize(function () {
         // adjust();
@@ -95,13 +106,14 @@ function adjust() {
         }
     }
 
-    var hBoxes = jQuery('.inner-hover');
+    /*var hBoxes = jQuery('.inner-hover');
     for (var i = 0; i < hBoxes.length; i++) {
         var boxText = jQuery(hBoxes[i]).children('h4');
         var parentBox = jQuery(hBoxes[i]).parents('.hover-box');
         boxText.css('line-height', parentBox.height() + 'px');
         boxText.css('height', parentBox.height() + 'px');
-    }
+        console.log(boxText.text() + '|' + parentBox.height());
+    }*/
 }
 
 function toggleScrollButton() {

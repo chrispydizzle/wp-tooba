@@ -53,7 +53,7 @@
         </nav><!-- #site-navigation -->
     </header>
 
-    <a href="javascript:" id="top"><i class="icon-chevron-up"></i></a>
+    <a href="javascript:" id="top" shown="false" style="opacity: 0;"><i class="icon-chevron-up"></i></a>
 
     <div class="site-content-contain">
         <div id="content" class="site-content">

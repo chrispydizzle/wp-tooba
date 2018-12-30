@@ -1,11 +1,12 @@
 jQuery(document).ready(function () {
+//     jQuery('body').append("<div id='top' style='bottom: -2vh;'></div>");
     adjust();
 
-    jQuery(window).resize(function(){
+    jQuery(window).resize(function () {
         // adjust();
     });
 
-    setInterval(toggleScrollButton, 250);
+    setInterval(toggleScrollButton, 100);
 
     jQuery('#top').click(function () {
         TweenMax.to(window, 2, {scrollTo: {y: 0, autoKill: true}, ease: Power2.easeInOut});
@@ -84,12 +85,11 @@ function adjust() {
     for (let i = 0; i < tid.length; i++) {
         let titem = jQuery(tid[i]);
         let t = jQuery('#' + titem.attr('target'));
-        let theight = t.height();
+        let theight = t.height() + 40;
         titem.height(theight);
-        if(jQuery(window).width() < 769){
+        if (jQuery(window).width() < 769) {
             t.parent().height(theight * 2);
-        }
-        else{
+        } else {
             t.parent().height(theight);
         }
     }
@@ -100,17 +100,20 @@ function adjust() {
         var parentBox = jQuery(hBoxes[i]).parents('.hover-box');
         boxText.css('line-height', parentBox.height() + 'px');
         boxText.css('height', parentBox.height() + 'px');
-
     }
 }
 
 function toggleScrollButton() {
     var topbutton = jQuery('#top');
 
-    if (jQuery(window).scrollTop() >= 100) {
-         // TweenMax.to(topbutton, 5, { scrollTo: {y: position, autoKill: true}, ease: Power2.easeInOut});
-    } else {
-        jQuery('#top').fadeOut("fast");
+    var scrolltop = jQuery(window).scrollTop();
+    var buttonstate = topbutton.attr('shown');
+
+    if (scrolltop >= 150 && buttonstate === 'false') {
+        TweenMax.to(topbutton, .5, {bottom: "2vh", opacity: ".75", ease: Power2.easeIn});
+        topbutton.attr('shown', 'true');
+    } else if (scrolltop < 150 && buttonstate === 'true') {
+        TweenMax.to(topbutton, .5, {bottom: "-6vh", opacity: "0", ease: Power2.easeIn});
+        topbutton.attr('shown', 'false');
     }
 }
-

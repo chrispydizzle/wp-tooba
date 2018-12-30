@@ -84,7 +84,19 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-@media screen and (min-width: 1024px){
+@media screen and (min-width: 1280px) {
+  ul.menu li {
+    font-size: 1.3em;
+  }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1279px) {
+  ul.menu li {
+    font-size: 1.1em;
+  }
+}
+
+@media screen and (min-width: 1024px) {
   .navbar {
     .navbar-default {
       @include transition(all, .2s, ease-in-out);
@@ -126,7 +138,6 @@ h1, h2, h3, h4, h5, h6 {
 
     li {
       float: left;
-      font-size: 1.1em;
       line-height: 45px;
       margin: 40px 1% 0;
     }
@@ -419,7 +430,7 @@ h3 {
 .about {
   overflow: hidden;
 
-  .col-md-6{
+  .col-md-6 {
     float: left;
     margin-left: 0;
   }
@@ -1327,34 +1338,34 @@ h3 {
 
 #top {
   position: fixed;
-  bottom: 4vw;
-  right: 2vh;
+  right: 2vw;
   background: rgb(0, 0, 0);
   background: rgba(0, 0, 0, 0.7);
   width: 3em;
   height: 3em;
   display: block;
   text-decoration: none;
+  cursor: pointer;
+
   @include border-radius(35px);
-  display: none;
-  @include transition(all 0.3s ease);
+
+  @include transition(all 0.25s ease);
 
   i {
     color: #ffffff;
     margin: 0;
     position: relative;
-    left: 16px;
-    top: 13px;
+    left: 11px;
+    top: 8px;
     font-size: 19px;
-    @include transition(all 0.3s ease);
+    @include transition(all 0.25s ease);
   }
 
   &:hover {
     background: rgba(0, 0, 0, 0.9);
 
     i {
-      color: #ffffff;
-      top: 5px;
+      color: $tooba_green;
     }
   }
 }

@@ -1365,6 +1365,7 @@ h3 {
   display: block;
   text-decoration: none;
   cursor: pointer;
+  z-index: 100;
 
   @include border-radius(35px);
 

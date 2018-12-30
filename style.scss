@@ -47,14 +47,29 @@ h1, h2, h3, h4, h5, h6 {
 
 }
 
+.lb-closeContainer {
+  display: none;
+}
+
+.lb-dataContainer {
+  .lb-data {
+    .lb-details {
+      width: 100%;
+    }
+  }
+}
+
 #lightbox .lb-caption {
   p, h1 {
     background: rgba(0, 0, 0, 0.5);
     border: black solid 1px;
     word-break: break-word;
     line-height: 1.5em;
-    position: fixed;
+    position: relative;
+    top: 50px;
     text-overflow: ellipsis;
+    font-weight: 300;
+    padding: .5em;
   }
 }
 
@@ -221,7 +236,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media screen and (min-width: 768px) {
-  #lightbox .lb-caption {
+  /*#lightbox .lb-caption {
     p, h1 {
       font-size: 1.5em;
       position: fixed;
@@ -232,7 +247,7 @@ h1, h2, h3, h4, h5, h6 {
       padding: 1em 1em;
       height: 50vh;
     }
-  }
+  }*/
 
   .col-md-6 {
     max-width: 45%;

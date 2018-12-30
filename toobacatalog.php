@@ -45,7 +45,7 @@ function tooba_catalog( $atts ) {
 		$OutstringContainer .= '<div class="col-md-4 col-sm-6 product ' . $DisplayClass . '" data-description="' . $Product->Get_Description() . '" data-id="' . $Product->Get_Item_ID() . '" data-date="' . $Product->Get_Created_Date() . '" data-order="' . $Governer . '">
                             <div class="portfolio-post mb30">
                                 <img src="' . $Product->GetMassagedLink() . '" alt="">
-                                <div class="hover-box">
+                                <div class="hover-box" style="opacity: 0">
                                     <div class="inner-hover">
                                     	<div class="popoutcontainer" style="bottom: 100%;">
                                         <a class="popout">&nbsp;</a>

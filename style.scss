@@ -80,7 +80,6 @@ html.lb-disable-scrolling.cpsharp {
 .portfolio-box {
   .portfolio-post {
     cursor: pointer;
-    transition: all 1s ease;
     border: solid 1px rgba(160, 160, 160, 0.29);
 
     &:hover {
@@ -884,9 +883,6 @@ h3 {
     height: 100%;
     background: $tooba_green;
     text-align: center;
-    transition: all 1s ease-in-out;
-    -webkit-transition: all 0.2s ease-in-out;
-    opacity: 0;
     overflow: hidden;
 
     .inner-hover {
@@ -963,16 +959,9 @@ h3 {
 
   &:hover {
     .hover-box {
-      opacity: .9;
-
       .inner-hover {
         h4 {
 
-        }
-
-        p {
-          -webkit-transform: translate3d(0, 350%, 0);
-          transform: translate3d(0, 350%, 0);
         }
 
         a {

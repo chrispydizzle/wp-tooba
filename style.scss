@@ -246,6 +246,7 @@ h1, h2, h3, h4, h5, h6 {
     display: inline-block;
     width: 45%;
     background-position-y: bottom;
+    min-height: 15vh;
   }
 
   .col-md-4 {
@@ -417,6 +418,11 @@ h3 {
 
 .about {
   overflow: hidden;
+
+  .col-md-6{
+    float: left;
+    margin-left: 0;
+  }
 
   p {
     margin: 0 2.5%;

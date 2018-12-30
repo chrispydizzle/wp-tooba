@@ -29,7 +29,7 @@ function sc_about( $atts, $content = null ) {
 
 	return '<div class="row" data-anchor="' . $a['anchor'] . '" >
                     <div class="col about" style="">
-                    	<div class="stretchto leftstretch" target="aboutus" style="background-image: url(' . $a['image'] . ')"></div>
+                    	<div class="stretchto leftstretch col-md-6" target="aboutus" style="background-image: url(' . $a['image'] . ')"></div>
                     	<div id="aboutus" class="col-md-6">
 	                        <div class="section-title left">
 	                            <h3>' . $a['title'] . '</h3>

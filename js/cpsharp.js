@@ -1,5 +1,10 @@
 jQuery(document).ready(function () {
     adjust();
+
+    jQuery(window).resize(function(){
+        // adjust();
+    });
+
     setInterval(toggleScrollButton, 250);
 
     jQuery('#top').click(function () {
@@ -81,7 +86,12 @@ function adjust() {
         let t = jQuery('#' + titem.attr('target'));
         let theight = t.height();
         titem.height(theight);
-        t.parent().height(theight);
+        if(jQuery(window).width() < 769){
+            t.parent().height(theight * 2);
+        }
+        else{
+            t.parent().height(theight);
+        }
     }
 
     var hBoxes = jQuery('.inner-hover');

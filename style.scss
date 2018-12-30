@@ -59,7 +59,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-html.lb-disable-scrolling.cpsharp{
+html.lb-disable-scrolling.cpsharp {
   overflow: hidden;
   position: static !important;
 }
@@ -194,17 +194,12 @@ html.lb-disable-scrolling.cpsharp{
     }
   }
 
-  /*  .portfolio-box .showme, .portfolio-box .showme img {
-      max-height: 30vh;
-    }*/
-
   #lightbox .lb-caption {
     p, h1 {
-      //left: 5vw;
       font-weight: 100;
-      // width: 75vw;
+
       padding: 1em 1em;
-      // height: 25vh;
+
     }
   }
 

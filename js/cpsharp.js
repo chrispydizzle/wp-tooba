@@ -2,6 +2,7 @@ jQuery(document).ready(function () {
 //     jQuery('body').append("<div id='top' style='bottom: -2vh;'></div>");
     adjust();
 
+
     jQuery(window).resize(function () {
         // adjust();
     });

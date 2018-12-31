@@ -176,7 +176,7 @@ function sc_contact( $atts, $content = null ) {
 				<div class="col-md-6 contact" id="contactus">
                         <div class="section-title left col-md-12">
                             <h3>' . $a['title'] . '</h3>
-	                        <form id="quotation" class="quotation-form">
+	                        <form id="quotation" class="quotation-form" action="sendmail">
 	                                <div class="col-md-6 col-sm-6">
 	                                    <div class="form-group">
 	                                        <input name="name" class="form-control" id="name" type="text" placeholder="Your Name" required="required">
@@ -197,7 +197,7 @@ function sc_contact( $atts, $content = null ) {
 	                                        <input name="address" class="form-control" id="address" type="text" placeholder="Your Address" required="required">
 	                                    </div>
 	                                </div>
-	                                <div class="col-md-6 col-sm-6">
+	                                <div class="col-md-6 col-sm-6" style="display: none">
 	                                    <div class="form-group">
 	                                        <select name="category" class="form-control" id="category" required="required">
 	                                            <option value="" selected="selected">Category</option>
@@ -209,7 +209,7 @@ function sc_contact( $atts, $content = null ) {
 	                                        </select>
 	                                    </div>
 	                                </div>
-	                                <div class="col-md-6 col-sm-6">
+	                                <div class="col-md-6 col-sm-6" style="display: none">
 	                                    <div class="form-group">
 	                                        <select name="room-no" class="form-control" id="room-no" required="required">
 	                                            <option value="" selected="selected">Room No</option>
@@ -232,7 +232,7 @@ function sc_contact( $atts, $content = null ) {
 	                                </div>
 	                            <div id="msgSubmit" class="h3 text-center hidden"></div>
 	                        </form>
-	                                                </div>                        
+                        </div>                        
                 	</div>
                		<div class="rightstretch col-md-6 contact stretchto" target="contactus" style="background-image: url(' . $a['image'] . ')"></div>
                 </div>';

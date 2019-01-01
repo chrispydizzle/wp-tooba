@@ -204,7 +204,7 @@ function sc_contact( $atts, $content = null ) {
 	                                </div>
 	                                <div class="col-md-12">
 	                                    <div>&nbsp;</div>
-	                                    <button type="submit" class="btn btn-primary" id="submit">Submit</button>
+	                                    <button type="submit" class="submitbutton btn btn-primary" id="submit">Submit</button>
 	                                </div>
 	                            <div id="msgSubmit" class="h3 text-center hidden"></div>
 	                        </form>

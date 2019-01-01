@@ -1,10 +1,23 @@
 jQuery(document).ready(function () {
 //     jQuery('body').append("<div id='top' style='bottom: -2vh;'></div>");
     adjust();
-
+    setInterval(toggleScrollButton, 100);
     var form = jQuery('#quotation');
 
+    var allowsubmit = true;
+
     form.submit(function () {
+        var contactusform = jQuery('#contactus');
+
+        if (allowsubmit) {
+            allowsubmit = false;
+            TweenMax.to(contactusform, .25, {opacity: ".25", ease: Power2.easeOut});
+        } else {
+            return false;
+        }
+
+        var submitbutton = jQuery(this).find('button');
+
         jQuery.post({
             url: serverhelp.ajax_url,
             data: ({
@@ -14,9 +27,16 @@ jQuery(document).ready(function () {
                 message: jQuery('#message').val()
             }),
             success: function (response) {
-                handleResponse(response);
-            }
+                allowsubmit = true;
+                TweenMax.to(contactusform, 1, {opacity: "0", ease: Power2.easeOut});
+                alert('Thanks, your message has been sent!');
+            },
+            error: function (response) {
+                allowsubmit = true;
+                TweenMax.to(contactusform, 1, {opacity: ".5", ease: Power2.easeOut});
+            },
         });
+
         return false;
     });
 
@@ -48,12 +68,6 @@ jQuery(document).ready(function () {
         min_move_y: 20,
         preventDefaultEvents: true
     });
-
-    jQuery(window).resize(function () {
-        // adjust();
-    });
-
-    setInterval(toggleScrollButton, 100);
 
     jQuery('#top').click(function () {
         TweenMax.to(window, 2, {scrollTo: {y: 0, autoKill: true}, ease: Power2.easeInOut});

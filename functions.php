@@ -121,9 +121,9 @@ function contact_mail( $forminfo ) {
 	$adminsubject   = 'tooba.in: contact request from ' . $forminfo['name'] . '.';
 	$visitorsubject = 'tooba.in: thanks for contacting us!';
 
-	$visitormessage = str_replace( '#NAME', $forminfo['name'], $GLOBALS['visitor-email'] );
+	$visitormessage = str_replace( '#NAME#', $forminfo['name'], $GLOBALS['visitor-email'] );
 
-	$adminmessage = str_replace( array( '#NAME', '#EMAIL', '#PHONE', '#ADDRESS', '#MESSAGE' ), array(
+	$adminmessage = str_replace( array( '#NAME#', '#EMAIL#', '#PHONE#', '#ADDRESS#', '#MESSAGE#' ), array(
 		$forminfo['name'],
 		$forminfo['email'],
 		$forminfo['phone'],

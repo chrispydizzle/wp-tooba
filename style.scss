@@ -1492,11 +1492,12 @@ h3 {
 }
 
 .site-info {
-  background: $tooba_gray;
+  background: rgb(0, 0, 0);
   text-align: right;
-
+  line-height: 1em;
+  padding: 1em 0;
+  color: $tooba_gray;
   a {
-    font-weight: bold;
     text-decoration: none;
     color: white;
   }
@@ -1519,3 +1520,25 @@ html.no-js.no-svg.cpsharp {
   max-width: 100vw;
 }
 
+
+@keyframes glowy {
+  from {
+    color: #f0e9b4;
+  }
+  50% {
+    color: #bfd6ff;
+  }
+  to {
+    color: #f0b7b4;
+  }
+}
+
+a.cpsharplink, a.cpsharplink:visited {
+  text-decoration: none;
+  @include animation-name(glowy);
+  @include animation-play-state(running);
+  @include animation(glowy);
+  @include animation-duration(5000ms);
+  @include animation-iteration-count(infinite);
+  @include animation-direction(alternate-reverse)
+}

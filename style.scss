@@ -192,13 +192,24 @@ html.lb-disable-scrolling.cpsharp {
     margin-bottom: 30px;
     display: inline-block;
     background-color: $tooba_green;
+
     &.col-md-6 {
       margin: 0 0 0 0;
     }
   }
 
-  .owl-scroll{
-    &.col-md-12{
+  .cpsharp {
+    .lb-nav {
+      a {
+        &.lb-next, &.lb-prev {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  .owl-scroll {
+    &.col-md-12 {
       background: $tooba_green;
     }
   }
@@ -306,7 +317,6 @@ html.lb-disable-scrolling.cpsharp {
   .news-detail {
     display: inline-block;
     vertical-align: top;
-
 
 
     &.col-md-6 {
@@ -1447,6 +1457,7 @@ h3 {
   text-decoration: none;
   cursor: pointer;
   z-index: 100;
+  border: 1px solid white;
 
   @include border-radius(35px);
 
@@ -1491,7 +1502,7 @@ h3 {
   }
 }
 
-.news-detail{
+.news-detail {
   h4 {
     font-size: 2em;
     text-transform: uppercase;
@@ -1504,6 +1515,7 @@ html.no-js.no-svg.cpsharp {
   overflow-x: hidden;
 }
 
-.lightboxOverlay{
+.lightboxOverlay {
   max-width: 100vw;
 }
+

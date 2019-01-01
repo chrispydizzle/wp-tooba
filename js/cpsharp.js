@@ -2,6 +2,24 @@ jQuery(document).ready(function () {
 //     jQuery('body').append("<div id='top' style='bottom: -2vh;'></div>");
     adjust();
 
+    var form = jQuery('#quotation');
+
+    form.submit(function () {
+        jQuery.post({
+            url: serverhelp.ajax_url,
+            data: ({
+                action: "contact_form", name: jQuery('#name').val(),
+                email: jQuery('#email').val(), address: jQuery('#address').val(),
+                phone: jQuery('#phone').val(),
+                message: jQuery('#message').val()
+            }),
+            success: function (response) {
+                handleResponse(response);
+            }
+        });
+        return false;
+    });
+
     jQuery('.portfolio-post').on('mouseover touchstart', function (f) {
         var popoutTarget = jQuery(this).find('.popoutcontainer');
         var h4target = jQuery(this).find('h4');
@@ -20,8 +38,12 @@ jQuery(document).ready(function () {
     });
 
     jQuery('.lb-outerContainer').touchwipe({
-        wipeLeft: function() { jQuery('.lb-next').click(); },
-        wipeRight: function() { jQuery('.lb-prev').click(); },
+        wipeLeft: function () {
+            jQuery('.lb-next').click();
+        },
+        wipeRight: function () {
+            jQuery('.lb-prev').click();
+        },
         min_move_x: 20,
         min_move_y: 20,
         preventDefaultEvents: true
@@ -111,7 +133,7 @@ function adjust() {
         let titem = jQuery(tid[i]);
         let t = jQuery('#' + titem.attr('target'));
         let theight = t.height() + 40;
-        let oheight = titem.height()+40;
+        let oheight = titem.height() + 40;
         theight = theight > oheight ? theight : oheight;
         titem.height(theight);
         t.height(theight);

@@ -182,7 +182,7 @@ function sc_contact( $atts, $content = null ) {
 	                                        <input name="name" class="form-control" id="name" type="text" placeholder="Your Name" required="required">
 	                                    </div>
 	                                </div>
-	                                <div class="col-md-6 col-sm-6">
+	                                <div class="col-md-6 col-sm-6">`	
 	                                    <div class="form-group">
 	                                        <input name="email" class="form-control" id="email" type="text" placeholder="E-mail" required="required">
 	                                    </div>
@@ -195,30 +195,6 @@ function sc_contact( $atts, $content = null ) {
 	                                <div class="col-md-6 col-sm-6">
 	                                    <div class="form-group">
 	                                        <input name="address" class="form-control" id="address" type="text" placeholder="Your Address" required="required">
-	                                    </div>
-	                                </div>
-	                                <div class="col-md-6 col-sm-6" style="display: none">
-	                                    <div class="form-group">
-	                                        <select name="category" class="form-control" id="category" required="required">
-	                                            <option value="" selected="selected">Category</option>
-	                                            <option value="Apartment">Apartment</option>
-	                                            <option value="Office">Office</option>
-	                                            <option value="Kitchen">Kitchen</option>
-	                                            <option value="Bathroom">Bathroom</option>
-	                                            <option value="Drawing Room">Drawing Room</option>
-	                                        </select>
-	                                    </div>
-	                                </div>
-	                                <div class="col-md-6 col-sm-6" style="display: none">
-	                                    <div class="form-group">
-	                                        <select name="room-no" class="form-control" id="room-no" required="required">
-	                                            <option value="" selected="selected">Room No</option>
-	                                            <option value="1">1</option>
-	                                            <option value="2">2</option>
-	                                            <option value="3">3</option>
-	                                            <option value="4">4</option>
-	                                            <option value="5">5</option>
-	                                        </select>
 	                                    </div>
 	                                </div>
 	                                <div class="col-md-12">

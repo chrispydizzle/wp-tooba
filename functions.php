@@ -27,6 +27,8 @@ function tooba_setup() {
 	add_image_size( 'tooba-featured-image', 2000, 1200, true );
 	add_image_size( 'tooba-thumbnail-avatar', 100, 100, true );
 	$GLOBALS['content_width'] = 525;
+	$GLOBALS['admin-email']   = file_get_contents( get_template_directory().'/emails/admin-acknowledge.html' );
+	$GLOBALS['visitor-email'] = file_get_contents( get_template_directory().'/emails/visitor-acknowledge.html' );
 	register_nav_menus( array( 'top' => __( 'Top Menu', 'tooba' ) ) );
 
 	add_theme_support( 'html5', array( 'comment-form', 'comment-list', 'gallery', 'caption', ) );
@@ -56,6 +58,7 @@ add_action( 'after_setup_theme', 'tooba_setup' );
 add_action( 'wp_ajax_get_items', 'get_items' );
 add_action( 'wp_ajax_nopriv_get_items', 'get_items' );
 add_action( 'wp_ajax_contact_form', 'prep_and_send_mail' );
+add_action( 'wp_ajax_nopriv_contact_form', 'prep_and_send_mail' );
 
 function get_items() {
 	global $item_images_table_name;
@@ -66,7 +69,7 @@ function get_items() {
 	foreach ( $Products as $product ) {
 		$plainLink        = $product->Item_Image_URL;
 		$templateLocation = strpos( $plainLink, 'wp-content' );
-		if ( $templateLocation == - 1 ) {
+		if ( $templateLocation === - 1 ) {
 			continue;
 		}
 
@@ -91,8 +94,18 @@ function add_shortcodes() {
 	add_shortcode( 'footer', 'sc_footer' );
 }
 
+function wpb_sender_email( $original_email_address ) {
+	if ( strpos( $original_email_address, 'portal.tooba.in' ) > - 1 ) {
+		return 'info@tooba.in';
+	}
+
+	return $original_email_address;
+}
+
+add_filter( 'wp_mail_from', 'wpb_sender_email' );
+
 function prep_and_send_mail() {
-	$forminfo = array();
+	$forminfo            = array();
 	$forminfo['name']    = sanitize_text_field( $_POST['name'] );
 	$forminfo['email']   = sanitize_text_field( $_POST['email'] );
 	$forminfo['phone']   = sanitize_text_field( $_POST['phone'] );
@@ -102,15 +115,25 @@ function prep_and_send_mail() {
 }
 
 function contact_mail( $forminfo ) {
-	$headers = array( 'Content-Type: text/html; charset=UTF-8' );
-	wp_mail( 'info@tooba.in', 'tooba.in: contact request from ' . $forminfo["name"] . '.',
-		"This e-mail is to notify you that " . $forminfo["name"] . "has just filled out the contact form at tooba.in Including these details: <br \>\r\n" .
-		"Name:" . $forminfo["name"] . '<br />' .
-		"Email:" . $forminfo["email"] . '<br />' .
-		"Phone:" . $forminfo["phone"] . '<br />' .
-		"Address:" . $forminfo["address"] . '<br />' .
-		"Message:" . $forminfo["message"] . '<br />',
-		$headers );
+	$headers   = array( 'Content-Type: text/html; charset=UTF-8', 'From: Tooba.in Website <info@tooba.in>' );
+	$infoemail = 'info@tooba.in';
+
+	$adminsubject   = 'tooba.in: contact request from ' . $forminfo['name'] . '.';
+	$visitorsubject = 'tooba.in: thanks for contacting us!';
+
+	$visitormessage = str_replace( '#NAME', $forminfo['name'], $GLOBALS['visitor-email'] );
+
+	$adminmessage = str_replace( array( '#NAME', '#EMAIL', '#PHONE', '#ADDRESS', '#MESSAGE' ), array(
+		$forminfo['name'],
+		$forminfo['email'],
+		$forminfo['phone'],
+		$forminfo['address'],
+		$forminfo['message']
+	), $GLOBALS['admin-email'] );
+
+
+	wp_mail( $forminfo['email'], $visitorsubject, $visitormessage, $headers );
+	wp_mail( $infoemail, $adminsubject, $adminmessage, $headers );
 }
 
 /**

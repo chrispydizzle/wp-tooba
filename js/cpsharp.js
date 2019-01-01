@@ -6,37 +6,7 @@ jQuery(document).ready(function () {
 
     var allowsubmit = true;
 
-
-    form.submit(function () {
-        var contactusform = jQuery('#contactus');
-        var submitbutton = jQuery('#quotation').find('button');
-
-        if (allowsubmit) {
-            allowsubmit = false;
-            TweenMax.to(contactusform, .25, {opacity: ".25", ease: Power2.easeOut});
-        } else {
-            return false;
-        }
-
-        jQuery.post({
-            url: serverhelp.ajax_url,
-            data: ({
-                action: "contact_form", name: jQuery('#name').val(),
-                email: jQuery('#email').val(), address: jQuery('#address').val(),
-                phone: jQuery('#phone').val(),
-                message: jQuery('#message').val()
-            }),
-            success: function (response) {
-                allowsubmit = true;
-                TweenMax.to(contactusform, 1, {opacity: "0", ease: Power2.easeOut});
-                alert('Thanks, your message has been sent!');
-            },
-            error: function (response) {
-                allowsubmit = true;
-                TweenMax.to(contactusform, 1, {opacity: ".5", ease: Power2.easeOut});
-            },
-        });
-
+    form.find('button').click(function () {
         return false;
     });
 
@@ -184,5 +154,32 @@ function toggleScrollButton() {
 }
 
 function submitform(f){
-    jQuery('#quotation').submit();
+    var contactusform = jQuery('#contactus');
+    var submitbutton = jQuery('#quotation').find('button');
+
+    if (allowsubmit) {
+        allowsubmit = false;
+        TweenMax.to(contactusform, .25, {opacity: ".25", ease: Power2.easeOut});
+    } else {
+        return false;
+    }
+
+    jQuery.post({
+        url: serverhelp.ajax_url,
+        data: ({
+            action: "contact_form", name: jQuery('#name').val(),
+            email: jQuery('#email').val(), address: jQuery('#address').val(),
+            phone: jQuery('#phone').val(),
+            message: jQuery('#message').val()
+        }),
+        success: function (response) {
+            allowsubmit = true;
+            TweenMax.to(contactusform, 1, {opacity: "0", ease: Power2.easeOut});
+            alert('Thanks, your message has been sent!');
+        },
+        error: function (response) {
+            allowsubmit = true;
+            TweenMax.to(contactusform, 1, {opacity: ".5", ease: Power2.easeOut});
+        },
+    });
 }

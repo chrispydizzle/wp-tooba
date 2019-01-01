@@ -205,6 +205,7 @@ function sc_contact( $atts, $content = null ) {
 	                                <div class="col-md-12">
 	                                    <div>&nbsp;</div>
 	                                    <button class="submitbutton g-recaptcha btn btn-primary" data-sitekey="6Lch84UUAAAAAG4Lt_Np2i1QFk2U7yEshNUyDA1D" data-callback="submitform" id="submit">Submit</button>
+	                                    <button class="submitbutton btn btn-primary" id="summit">No</button>
 	                                </div>
 	                            <div id="msgSubmit" class="h3 text-center hidden"></div>
 	                        </form>

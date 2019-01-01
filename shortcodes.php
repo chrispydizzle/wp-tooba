@@ -1,6 +1,5 @@
 <?php
 
-
 function sc_headerbanner( $atts, $content = null ) {
 	$a = shortcode_atts( array(
 		'number' => 0,
@@ -172,6 +171,10 @@ function sc_contact( $atts, $content = null ) {
 		'anchor' => 'contactus'
 	), $atts );
 
+	// $thatthing = $GLOBALS['url'];
+	$captchabutton    = '<button class="submitbutton g-recaptcha btn btn-primary" data-sitekey="6Lch84UUAAAAAG4Lt_Np2i1QFk2U7yEshNUyDA1D" data-callback="submitform" id="submit">Submit</button>';
+	// $notcaptchabutton = '<button type="submit" class="submitbutton btn btn-primary" onclick="submitform" id="submit">Submit</button>';
+
 	return '<div class="row col col shaded" style="padding: 0 0;" data-anchor="' . $a['anchor'] . '"> 
 				<div class="col-md-6 contact" id="contactus">
                         <div class="section-title left col-md-12">
@@ -204,8 +207,7 @@ function sc_contact( $atts, $content = null ) {
 	                                </div>
 	                                <div class="col-md-12">
 	                                    <div>&nbsp;</div>
-	                                    <button class="submitbutton g-recaptcha btn btn-primary" data-sitekey="6Lch84UUAAAAAG4Lt_Np2i1QFk2U7yEshNUyDA1D" data-callback="submitform" id="submit">Submit</button>
-	                                    <button class="submitbutton btn btn-primary" id="summit">No</button>
+	                                    ' . $captchabutton. '
 	                                </div>
 	                            <div id="msgSubmit" class="h3 text-center hidden"></div>
 	                        </form>

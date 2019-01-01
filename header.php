@@ -19,8 +19,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <?php wp_head(); ?>
-    <script src='https://www.google.com/recaptcha/api.js?render=6Lcw8IUUAAAAAAkVmG8OW4OnK-EwZFsk36mEGcfU'></script>
-
 </head>
 
 <body <?php body_class(); ?>>

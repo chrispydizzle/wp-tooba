@@ -10,7 +10,7 @@
  */
 
 require_once 'shortcodes.php';
-include_once 'toobacatalog.php';
+require_once 'toobacatalog.php';
 
 /**
  * Sets up theme defaults and registers support for various WordPress features.
@@ -27,8 +27,9 @@ function tooba_setup() {
 	add_image_size( 'tooba-featured-image', 2000, 1200, true );
 	add_image_size( 'tooba-thumbnail-avatar', 100, 100, true );
 	$GLOBALS['content_width'] = 525;
-	$GLOBALS['admin-email']   = file_get_contents( get_template_directory().'/emails/admin-acknowledge.html' );
-	$GLOBALS['visitor-email'] = file_get_contents( get_template_directory().'/emails/visitor-acknowledge.html' );
+
+//	$GLOBALS['admin-email']   = file_get_contents( get_template_directory() . '/emails/admin-acknowledge.html' );
+//	$GLOBALS['visitor-email'] = file_get_contents( get_template_directory() . '/emails/visitor-acknowledge.html' );
 	register_nav_menus( array( 'top' => __( 'Top Menu', 'tooba' ) ) );
 
 	add_theme_support( 'html5', array( 'comment-form', 'comment-list', 'gallery', 'caption', ) );
@@ -39,7 +40,6 @@ function tooba_setup() {
 	add_theme_support( 'custom-logo', array(
 		'height'     => 80,
 		'flex-width' => true
-	,
 	) );
 
 	// Add theme support for selective refresh for widgets.
@@ -180,19 +180,20 @@ function tooba_scripts() {
 	wp_enqueue_style( 'tooba-style', get_stylesheet_uri() );
 	wp_enqueue_style( 'lightbox-style', get_theme_file_uri( '/style/lightbox.min.css' ) );
 	wp_enqueue_style( 'fontawesome', 'https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css' );
-	/*
-	 * <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/plugins/ScrollToPlugin.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/easing/EasePack.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenLite.min.js"></script>
-	 */
-	wp_register_script('captcha', 'https://www.google.com/recaptcha/api.js');
+
+	// wp_register_script( 'captcha', 'https://www.google.com/recaptcha/api.js' );
+	wp_register_script( 'captcha', 'https://www.google.com/recaptcha/api.js?render=6Lch9IUUAAAAAHfaV2FzQmqIKxvUsQYIRRybvQ33' );
 	wp_register_script( 'greensock', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js' );
 	wp_register_script( 'greensockscroll', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/plugins/ScrollToPlugin.min.js', [ 'greensock' ] );
 
 	// wp_register_script('lightbox', get_theme_file_uri('/js/lightbox.js'));
 	wp_register_script( 'lightbox', get_theme_file_uri( '/js/lightbox.min.js' ) );
 	wp_register_script( 'jqtouchwipe', get_theme_file_uri( '/js/jquery.touchwipe.1.1.1.js' ) );
-	wp_register_script( 'cpsharp', get_theme_file_uri( '/js/cpsharp.js' ), [ 'greensock', 'lightbox', 'jqtouchwipe' ] );
+	wp_register_script( 'cpsharp', get_theme_file_uri( '/js/cpsharp.js' ), [
+		'greensock',
+		'lightbox',
+		'jqtouchwipe'
+	] );
 	wp_localize_script( 'cpsharp', 'serverhelp', array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );
 	wp_register_script( 'bootstrapjs', get_theme_file_uri( '/js/bootstrap.min.js' ), [ 'bootstrapbundle' ] );
 
@@ -201,6 +202,7 @@ function tooba_scripts() {
 	wp_enqueue_script( 'lightbox' );
 	wp_enqueue_script( 'greensockscroll' );
 	wp_enqueue_script( 'cpsharp' );
+	wp_enqueue_script( 'captcha' );
 
 
 	$twentyseventeen_l10n = array(

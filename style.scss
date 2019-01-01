@@ -325,8 +325,10 @@ html.lb-disable-scrolling.cpsharp {
   }
 
   .quotation-form {
-    textarea {
-      margin: 1em 0;
+
+
+    input, textarea {
+      margin: 0.1em 0;
       padding: 0.5em;
     }
 
@@ -878,23 +880,19 @@ h3 {
   input, textarea, select {
     background: #ffffff;
     border: 1px solid #cccccc;
-    -webkit-border-radius: 0;
-    -moz-border-radius: 0;
-    -o-border-radius: 0;
-    border-radius: 0;
+    @include border-radius(0);
     color: #999999;
     display: block;
     font-size: 13px;
     outline: none;
     padding: 1.6vh 0 1.6vh 0.5vw;
-    transition: all 0.2s ease-in-out;
-    -moz-transition: all 0.2s ease-in-out;
-    -webkit-transition: all 0.2s ease-in-out;
-    -o-transition: all 0.2s ease-in-out;
+    @include transition(all 0.5s ease-in-out);
 
     &:focus {
-      border: 1px solid $tooba_green;
-      box-shadow: $tooba_green 0 0 10px 1px;
+      border: 1px solid rgb(150, 200, 50);
+      box-shadow: #96c832f0 0 0 8px 1px;
+      background-color: rgba(147, 197, 72, 0.21);
+      color: black;
     }
   }
 }
@@ -1497,6 +1495,7 @@ h3 {
   line-height: 1em;
   padding: 1em 0;
   color: $tooba_gray;
+
   a {
     text-decoration: none;
     color: white;

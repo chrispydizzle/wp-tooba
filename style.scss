@@ -1541,3 +1541,8 @@ a.cpsharplink, a.cpsharplink:visited {
   @include animation-iteration-count(infinite);
   @include animation-direction(alternate-reverse)
 }
+
+// sorry :(
+.grecaptcha-badge {
+  display: none;
+}

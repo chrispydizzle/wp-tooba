@@ -172,7 +172,7 @@ function sc_contact( $atts, $content = null ) {
 	), $atts );
 
 	// $thatthing = $GLOBALS['url'];
-	$captchabutton    = '<button class="submitbutton g-recaptcha btn btn-primary" data-sitekey="6Lch84UUAAAAAG4Lt_Np2i1QFk2U7yEshNUyDA1D" data-callback="submitform" id="submit">Submit</button>';
+	$captchabutton    = '<button class="submitbutton g-recaptcha btn btn-primary" data-sitekey="6Lch84UUAAAAAG4Lt_Np2i1QFk2U7yEshNUyDA1D" data-callback="submitform" data-badge="inline" id="submit">Submit</button>';
 	// $notcaptchabutton = '<button type="submit" class="submitbutton btn btn-primary" onclick="submitform" id="submit">Submit</button>';
 
 	return '<div class="row col col shaded" style="padding: 0 0;" data-anchor="' . $a['anchor'] . '"> 

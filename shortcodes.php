@@ -204,8 +204,7 @@ function sc_contact( $atts, $content = null ) {
 	                                </div>
 	                                <div class="col-md-12">
 	                                    <div>&nbsp;</div>
-	                                    <button type="submit" class="submitbutton g-recaptcha btn btn-primary" data-sitekey="6Lch84UUAAAAAG4Lt_Np2i1QFk2U7yEshNUyDA1D"
-data-callback="YourOnSubmitFn" id="submit">Submit</button>
+	                                    <button type="submit" class="submitbutton g-recaptcha btn btn-primary" data-sitekey="6Lch84UUAAAAAG4Lt_Np2i1QFk2U7yEshNUyDA1D" data-callback="submitform" id="submit">Submit</button>
 	                                </div>
 	                            <div id="msgSubmit" class="h3 text-center hidden"></div>
 	                        </form>
@@ -230,14 +229,12 @@ function sc_news( $atts, $content = null ) {
 	);
 
 	$my_posts = get_posts( $args );
-	if ( count( $my_posts ) == 0 ) {
+	if ( count( $my_posts ) === 0 ) {
 		return '<section class="pad-t80 pad-b50 green_buffer" data-anchor="' . $a['anchor'] . '">
-<div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-No news found.
-</div></div></div>
-</section>';
+					<div class="container"><div class="row"><div class="col-md-12">
+					No news found.
+					</div></div></div>
+				</section>';
 	}
 
 	$my_posts = $my_posts[0];

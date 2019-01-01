@@ -185,6 +185,7 @@ function tooba_scripts() {
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/easing/EasePack.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenLite.min.js"></script>
 	 */
+	wp_register_script('captcha', 'https://www.google.com/recaptcha/api.js');
 	wp_register_script( 'greensock', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js' );
 	wp_register_script( 'greensockscroll', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/plugins/ScrollToPlugin.min.js', [ 'greensock' ] );
 

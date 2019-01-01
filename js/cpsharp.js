@@ -6,8 +6,10 @@ jQuery(document).ready(function () {
 
     var allowsubmit = true;
 
+
     form.submit(function () {
         var contactusform = jQuery('#contactus');
+        var submitbutton = jQuery('#quotation').find('button');
 
         if (allowsubmit) {
             allowsubmit = false;
@@ -15,8 +17,6 @@ jQuery(document).ready(function () {
         } else {
             return false;
         }
-
-        var submitbutton = jQuery(this).find('button');
 
         jQuery.post({
             url: serverhelp.ajax_url,
@@ -181,4 +181,8 @@ function toggleScrollButton() {
         TweenMax.to(topbutton, .5, {bottom: "-6vh", opacity: "0", ease: Power2.easeIn});
         topbutton.attr('shown', 'false');
     }
+}
+
+function submitform(f){
+    jQuery('#quotation').submit();
 }

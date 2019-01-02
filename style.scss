@@ -300,9 +300,25 @@ html.lb-disable-scrolling.cpsharp {
 }
 
 @media screen and (min-width: 768px) {
+  .latest-news.col-md-4 {
+    margin: 0 0 0 1%;
+  }
 
-  .owl-scroll .col-md-12 {
-    background: rgb(255, 255, 255);
+  .newsmore{
+    overflow:hidden;
+    position: relative;
+    top: -7.25em;
+    padding: 3em 0 .25em 0;
+    text-align: center;
+    background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,.35), rgba(255,255,255,1));
+    cursor: pointer;
+    text-decoration: underline;
+  }
+
+  .owl-scroll {
+    .col-md-12 {
+      background: rgb(255, 255, 255);
+    }
   }
 
   .latest-news {
@@ -312,6 +328,11 @@ html.lb-disable-scrolling.cpsharp {
     &.col-md-6 {
       margin: 0 2% 0 0;
     }
+  }
+
+  .news-detail.col-md-6.shortenednews {
+    padding-top: 0;
+    max-width: 65%;
   }
 
   .news-detail {
@@ -1210,6 +1231,9 @@ h3 {
     position: relative;
     text-align: left;
     background: #fff;
+    vertical-align: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
 
     img {
       width: 99.8%;
@@ -1487,6 +1511,9 @@ h3 {
 
 .rightstretch {
   vertical-align: top;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: left center;
 }
 
 .site-info {
@@ -1507,6 +1534,10 @@ h3 {
     font-size: 2em;
     text-transform: uppercase;
     margin-bottom: 1em;
+
+    &:first-of-type {
+      margin-top: 1em;
+    }
   }
 }
 
@@ -1544,5 +1575,13 @@ a.cpsharplink, a.cpsharplink:visited {
 
 // sorry :(
 .grecaptcha-badge {
+  display: none;
+}
+
+.shortenednews {
+  overflow: hidden;
+}
+
+.edit-link {
   display: none;
 }

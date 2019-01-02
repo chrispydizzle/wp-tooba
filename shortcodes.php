@@ -172,7 +172,8 @@ function sc_contact( $atts, $content = null ) {
 	), $atts );
 
 	// $thatthing = $GLOBALS['url'];
-	$captchabutton    = '<button class="submitbutton g-recaptcha btn btn-primary" data-sitekey="6Lch84UUAAAAAG4Lt_Np2i1QFk2U7yEshNUyDA1D" data-callback="submitform" data-badge="inline" id="submit">Submit</button>';
+	$captchabutton = '<button class="submitbutton g-recaptcha btn btn-primary" data-sitekey="6Lch84UUAAAAAG4Lt_Np2i1QFk2U7yEshNUyDA1D" data-callback="submitform" data-badge="inline" id="submit">Submit</button>';
+
 	// $notcaptchabutton = '<button type="submit" class="submitbutton btn btn-primary" onclick="submitform" id="submit">Submit</button>';
 
 	return '<div class="row col col shaded" style="padding: 0 0;" data-anchor="' . $a['anchor'] . '"> 
@@ -182,22 +183,22 @@ function sc_contact( $atts, $content = null ) {
 	                        <form id="quotation" class="quotation-form" action="sendmail">
 	                                <div class="col-md-6 col-sm-6">
 	                                    <div class="form-group">
-	                                        <input name="name" class="form-control" id="name" type="text" placeholder="Your Name" required="required">
-	                                    </div>
-	                                </div>
-	                                <div class="col-md-6 col-sm-6">`	
-	                                    <div class="form-group">
-	                                        <input name="email" class="form-control" id="email" type="text" placeholder="E-mail" required="required">
+	                                        <input name="name" class="form-control" id="name" type="text" placeholder="Your Name" required="required" />
 	                                    </div>
 	                                </div>
 	                                <div class="col-md-6 col-sm-6">
 	                                    <div class="form-group">
-	                                        <input name="phone" class="form-control" id="phone" type="text" placeholder="Your Phone" required="required">
+	                                        <input name="email" class="form-control" id="email" type="text" placeholder="E-mail" required="required" />
 	                                    </div>
 	                                </div>
 	                                <div class="col-md-6 col-sm-6">
 	                                    <div class="form-group">
-	                                        <input name="address" class="form-control" id="address" type="text" placeholder="Your Address" required="required">
+	                                        <input name="phone" class="form-control" id="phone" type="text" placeholder="Your Phone" required="required" />
+	                                    </div>
+	                                </div>
+	                                <div class="col-md-6 col-sm-6">
+	                                    <div class="form-group">
+	                                        <input name="address" class="form-control" id="address" type="text" placeholder="Your Address" required="required"  />
 	                                    </div>
 	                                </div>
 	                                <div class="col-md-12">
@@ -207,7 +208,7 @@ function sc_contact( $atts, $content = null ) {
 	                                </div>
 	                                <div class="col-md-12">
 	                                    <div>&nbsp;</div>
-	                                    ' . $captchabutton. '
+	                                    ' . $captchabutton . '
 	                                </div>
 	                            <div id="msgSubmit" class="h3 text-center hidden"></div>
 	                        </form>
@@ -240,9 +241,11 @@ function sc_news( $atts, $content = null ) {
 				</section>';
 	}
 
-	$my_posts = $my_posts[0];
-	$thumbid  = get_post_meta( $my_posts->ID, '_thumbnail_id', true );
-	$image    = wp_get_attachment_image( $thumbid, 'full' );
+	$my_posts  = $my_posts[0];
+	$thumbid   = get_post_meta( $my_posts->ID, '_thumbnail_id', true );
+	$imageinfo = wp_get_attachment_metadata( $thumbid );
+	$imageurl  = wp_get_attachment_url( $thumbid );
+	$imgorig = wp_get_attachment_image_src( $thumbid , "full" );
 
 	return '<section class="pad-t80 pad-b50 green_buffer" data-anchor="' . $a['anchor'] . '">
             <div class="container">
@@ -255,10 +258,9 @@ function sc_news( $atts, $content = null ) {
                 </div>
                 <div class="row owl-scroll">
                     <div class="col-md-12">
-                        <div class="latest-news col-md-6">
-                            <div class="latest-news-img">
-                                ' . $image . '
-                                <div><span>' . $my_posts->post_date . '</span></div>
+                        <div class="latest-news col-md-4">
+                            <div class="latest-news-img" data-img-width="' . $imgorig[1] . '" data-img-height="' . $imgorig[2] . '" style="background-image: url(\'' . $imgorig[0] . '\')">
+                                <!--<span><div>' . $my_posts->post_date . '</span</div>>-->
                             </div>
                         </div>
                         <div class="news-detail col-md-6">

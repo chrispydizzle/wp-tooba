@@ -1,9 +1,37 @@
 var allowsubmit = true;
 
-jQuery(document).ready(function () {
+function do_dynamic_news(newsdetail, latestimg) {
+    var ratio = jQuery('.latest-news-img').width() / jQuery('.latest-news-img').attr('data-img-width');
+    newsdetail.addClass('shortenednews');
+    var originalNewsHeight = newsdetail.height();
+    var newHeight = jQuery('.latest-news-img').attr('data-img-height') * ratio;
+
+    newsdetail.attr('data-originalheight', originalNewsHeight);
+    latestimg.height(newHeight);
+    newsdetail.parent().height(newHeight)
+    newsdetail.parent().append("<div class='newsmore' data-originalheight='" + originalNewsHeight + "'>See More</div>");
+    jQuery('.newsmore').click(function () {
+        jQuery(this).parent().height(jQuery(this).attr('data-originalheight'));
+        jQuery(this).siblings('.news-detail').height(jQuery(this).attr('data-originalheight'));
+        TweenMax.to(jQuery(this), .5, {height: '0', padding: '0'});
+    });
+}
+
+jQuery(window).load(function () {
     adjust();
+    var latestimg = jQuery('.latest-news-img');
+    var newsdetail = jQuery('.news-detail');
+
+    if (newsdetail.height() > latestimg.height()) {
+        do_dynamic_news(newsdetail, latestimg);
+    }
+});
+
+jQuery(document).ready(function () {
     setInterval(toggleScrollButton, 100);
+
     var form = jQuery('#quotation');
+
     form.submit(function (e) {
         console.log(e);
 

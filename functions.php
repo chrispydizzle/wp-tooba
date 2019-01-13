@@ -231,7 +231,6 @@ function get_image_id($image_url) {
 	global $wpdb;
 	$testString = wp_get_canonical_url().$image_url;
 	$imagesize = getimagesize($testString);
-	$ratio =
 	$attachment = $wpdb->get_col($wpdb->prepare("SELECT ID FROM $wpdb->posts WHERE guid='%s';", $testString ));
 	return $attachment[0];
 }

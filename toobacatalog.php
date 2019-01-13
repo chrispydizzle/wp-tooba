@@ -6,23 +6,22 @@ function tooba_display_catalog() {
 
 add_action( 'init', 'tooba_display_catalog' );
 
-function tooba_catalog( $atts ) {
+function tooba_catalog( $a ) {
 	global $wpdb, $catalogues_table_name, $catalogue_items_table_name;
 
-	extract(
-		shortcode_atts( array(
-			'id'    => '1',
-			'title' => 'Our Products',
-			'type'  => 'Corporate',
-            'anchor' => 'catalog',
-			'class' => '',
-		),
-			$atts ) );
+	$atts = shortcode_atts( array(
+		'id'         => '1',
+		'title'      => 'Our Products',
+		'type'       => 'Corporate',
+		'anchor'     => 'catalog',
+		'styleclass' => 'none',
+	),
+		$a );
 
 	$Catalogue      = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM $catalogues_table_name WHERE Catalogue_ID=%d", $atts['id'] ) );
 	$CatalogueItems = $wpdb->get_results( "SELECT * FROM $catalogue_items_table_name WHERE Catalogue_ID=" . $Catalogue->Catalogue_ID . ' ORDER BY Position' );
 
-	$ContainerTop = '<section class="pad-t80 pad-b50 '.$atts['class'].'" data-anchor="'.$atts['anchor'].'">
+	$ContainerTop = '<section class="pad-t80 pad-b50 ' . $atts['styleclass'] . '" data-anchor="' . $atts['anchor'] . '">
             <div class="container">
                 <div class="row">	
                     <div class="col-md-8">

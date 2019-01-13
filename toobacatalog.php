@@ -65,8 +65,7 @@ function tooba_catalog( $atts ) {
 	}
 
 	$OutstringContainer .= '</div>
-            		<div class="col-md-12">
-					&nbsp;
+            		<div class="col-md-12 endcatalog">				&nbsp;
 					</div>            
                 </div>
             </div>

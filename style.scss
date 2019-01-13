@@ -80,6 +80,8 @@ html.lb-disable-scrolling.cpsharp {
 }
 
 .portfolio-box {
+  margin-bottom: 2em;
+
   .portfolio-post {
     cursor: pointer;
     border: solid 1px rgba(160, 160, 160, 0.29);
@@ -300,26 +302,34 @@ html.lb-disable-scrolling.cpsharp {
 }
 
 @media screen and (min-width: 768px) {
-  .latest-news.col-md-4 {
-    margin: 0 0 0 1%;
+  .owl-scroll {
+    .col-md-12 {
+      max-width: 98%;
+      margin: 0;
+      padding: 0 0 0 2.5%;
+      overflow: hidden;
+      background: rgb(255, 255, 255);
+    }
+  }
+
+  .col-md-12 {
+    &.endcatalog {
+      margin-bottom: 1em;
+    }
+  }
+
+  .latest-news {
+    &.col-md-6 {
+    }
+
+    .latest-news-img {
+    }
   }
 
   .about {
     .scroll {
-      overflow-y: scroll;
-      max-width: 53%;
+      max-width: 50%;
       margin: 0 0 0 1%;
-    }
-    .col-md-6 {
-      margin-left: 0;
-    }
-
-    div {
-      img {
-        vertical-align: middle;
-        width: 100%;
-        height: auto;
-      }
     }
   }
 
@@ -327,18 +337,11 @@ html.lb-disable-scrolling.cpsharp {
   .newsmore {
     overflow: hidden;
     position: relative;
-    top: -7.25em;
     padding: 3em 0 .25em 0;
     text-align: center;
     background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, .35), rgba(255, 255, 255, 1));
     cursor: pointer;
     text-decoration: underline;
-  }
-
-  .owl-scroll {
-    .col-md-12 {
-      background: rgb(255, 255, 255);
-    }
   }
 
   .latest-news {
@@ -352,7 +355,6 @@ html.lb-disable-scrolling.cpsharp {
 
   .news-detail.col-md-6.shortenednews {
     padding-top: 0;
-    max-width: 65%;
   }
 
   .news-detail {
@@ -361,7 +363,8 @@ html.lb-disable-scrolling.cpsharp {
 
 
     &.col-md-6 {
-      padding-top: 2em;
+      max-width: 50%;
+      margin: 0;
     }
   }
 
@@ -572,11 +575,28 @@ h3 {
   }
 }
 
+.owl-scroll{
+  overflow: hidden;
+}
+
 .about {
   overflow: hidden;
 
+  .scroll {
+    overflow-y: scroll;
+  }
+
+  div {
+    img {
+      vertical-align: middle;
+      width: 100%;
+      height: auto;
+    }
+  }
+
   .col-md-6 {
     float: left;
+    margin-left: 0;
   }
 
   p {
@@ -1249,15 +1269,15 @@ h3 {
   .latest-news-img {
     position: relative;
     text-align: left;
-    background: #fff;
     vertical-align: bottom;
-    background-repeat: no-repeat;
+    background: #fff no-repeat;
     background-size: cover;
 
     img {
-      width: 99.8%;
+      width: 100%;
       height: auto;
       display: inline-block;
+      vertical-align: middle;
       margin-right: 3em;
       border: 1px solid rgb(0, 0, 0);
     }
@@ -1461,7 +1481,7 @@ h3 {
   position: absolute;
   z-index: 100;
   left: 0;
-  margin: 0;
+  margin: 0 0 0 0;
   max-width: 100vw;
 
   a {
@@ -1475,7 +1495,7 @@ h3 {
     border: rgb(0, 0, 0) 1px solid;
     padding: .1em 0.4em;
     position: relative;
-    top: -0.2em;
+    top: -15px;
     left: 0;
 
     &:hover {
@@ -1549,6 +1569,9 @@ h3 {
 }
 
 .news-detail {
+
+  overflow-y: scroll;
+
   h4 {
     font-size: 2em;
     text-transform: uppercase;

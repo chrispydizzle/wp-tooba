@@ -262,12 +262,13 @@ function sc_news( $atts, $content = null ) {
                 </div>
                 <div class="row owl-scroll">
                     <div class="col-md-12">
-                        <div class="latest-news col-md-4">
-                            <div class="latest-news-img" data-img-width="' . $imgorig[1] . '" data-img-height="' . $imgorig[2] . '" style="background-image: url(\'' . $imgorig[0] . '\')">
+                        <div class="latest-news col-md-6">
+                            <div class="latest-news-img" data-img-width="' . $imgorig[1] . '" data-img-height="' . $imgorig[2] . '" >
                                 <!--<span><div>' . $my_posts->post_date . '</span</div>>-->
+                                <img id="newsimage" src="' . $imgorig[0] . '" />
                             </div>
                         </div>
-                        <div class="news-detail col-md-6">
+                        <div id="newscopy" class="news-detail col-md-6 scroll" style="height:0; opacity: 0;">
                             <h4>' . $my_posts->post_title . '</h4>
                             <p>' . $my_posts->post_content . '</p>
 						</div>

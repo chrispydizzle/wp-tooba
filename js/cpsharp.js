@@ -23,7 +23,7 @@ jQuery(window).load(function () {
     var newsdetail = jQuery('.news-detail');
 
     if (newsdetail.height() > latestimg.height()) {
-        do_dynamic_news(newsdetail, latestimg);
+        //do_dynamic_news(newsdetail, latestimg);
     }
 });
 
@@ -206,17 +206,21 @@ function handleResponse(response) {
 function adjust() {
     let scr = jQuery('#aboutus');
     let scrImage = jQuery('#aboutusimage');
+    let ncr = jQuery('#newscopy');
+    let ncrImage = jQuery('#newsimage');
     // scr.css('height', scrImage.height());
 
-    TweenMax.to(scr, .25, {opacity: "1", height: scrImage.height(), ease: Power2.easeOut});
+    TweenMax.to(scr, 1, {opacity: "1", height: scrImage.height() - 1 , ease: Power2.easeOut});
+
+    TweenMax.to(ncr, 1, {opacity: "1", height: ncrImage.height() - 1, ease: Power2.easeOut});
 
 
     let tid = jQuery('.stretchto');
     for (let i = 0; i < tid.length; i++) {
         let titem = jQuery(tid[i]);
         let t = jQuery('#' + titem.attr('target'));
-        let theight = t.height() + 40;
-        let oheight = titem.height() + 40;
+        let theight = t.height();
+        let oheight = titem.height();
         theight = theight > oheight ? theight : oheight;
         titem.height(theight);
         t.height(theight);

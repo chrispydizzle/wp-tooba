@@ -15,13 +15,14 @@ function tooba_catalog( $atts ) {
 			'title' => 'Our Products',
 			'type'  => 'Corporate',
             'anchor' => 'catalog',
+			'class' => '',
 		),
 			$atts ) );
 
 	$Catalogue      = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM $catalogues_table_name WHERE Catalogue_ID=%d", $atts['id'] ) );
 	$CatalogueItems = $wpdb->get_results( "SELECT * FROM $catalogue_items_table_name WHERE Catalogue_ID=" . $Catalogue->Catalogue_ID . ' ORDER BY Position' );
 
-	$ContainerTop = '<section class="pad-t80 pad-b50" data-anchor="'.$atts['anchor'].'">
+	$ContainerTop = '<section class="pad-t80 pad-b50 '.$atts['class'].'" data-anchor="'.$atts['anchor'].'">
             <div class="container">
                 <div class="row">	
                     <div class="col-md-8">

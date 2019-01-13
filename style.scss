@@ -80,8 +80,6 @@ html.lb-disable-scrolling.cpsharp {
 }
 
 .portfolio-box {
-  margin-bottom: 2em;
-
   .portfolio-post {
     cursor: pointer;
     border: solid 1px rgba(160, 160, 160, 0.29);
@@ -1626,4 +1624,8 @@ a.cpsharplink, a.cpsharplink:visited {
 
 .edit-link {
   display: none;
+}
+
+.add2embottom{
+  margin-bottom: 2em;
 }

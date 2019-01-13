@@ -226,6 +226,16 @@ function tooba_scripts() {
 
 add_action( 'wp_enqueue_scripts', 'tooba_scripts' );
 
+// retrieves the attachment ID from the file URL
+function get_image_id($image_url) {
+	global $wpdb;
+	$testString = wp_get_canonical_url().$image_url;
+	$imagesize = getimagesize($testString);
+	$ratio =
+	$attachment = $wpdb->get_col($wpdb->prepare("SELECT ID FROM $wpdb->posts WHERE guid='%s';", $testString ));
+	return $attachment[0];
+}
+
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
  *

@@ -304,13 +304,33 @@ html.lb-disable-scrolling.cpsharp {
     margin: 0 0 0 1%;
   }
 
-  .newsmore{
-    overflow:hidden;
+  .about {
+    .scroll {
+      overflow-y: scroll;
+      max-width: 53%;
+      margin: 0 0 0 1%;
+    }
+    .col-md-6 {
+      margin-left: 0;
+    }
+
+    div {
+      img {
+        vertical-align: middle;
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+
+
+  .newsmore {
+    overflow: hidden;
     position: relative;
     top: -7.25em;
     padding: 3em 0 .25em 0;
     text-align: center;
-    background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,.35), rgba(255,255,255,1));
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, .35), rgba(255, 255, 255, 1));
     cursor: pointer;
     text-decoration: underline;
   }
@@ -557,7 +577,6 @@ h3 {
 
   .col-md-6 {
     float: left;
-    margin-left: 0;
   }
 
   p {

@@ -204,6 +204,13 @@ function handleResponse(response) {
 }
 
 function adjust() {
+    let scr = jQuery('#aboutus');
+    let scrImage = jQuery('#aboutusimage');
+    // scr.css('height', scrImage.height());
+
+    TweenMax.to(scr, .25, {opacity: "1", height: scrImage.height(), ease: Power2.easeOut});
+
+
     let tid = jQuery('.stretchto');
     for (let i = 0; i < tid.length; i++) {
         let titem = jQuery(tid[i]);

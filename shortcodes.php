@@ -26,10 +26,14 @@ function sc_about( $atts, $content = null ) {
 		'anchor' => 'about',
 	), $atts );
 
+// 	$thay = get_image_id($a['image']);
+
 	return '<div class="row" data-anchor="' . $a['anchor'] . '" >
-                    <div class="col about" style="">
-                    	<div class="stretchto leftstretch col-md-6" target="aboutus" style="background-image: url(' . $a['image'] . ')"></div>
-                    	<div id="aboutus" class="col-md-6">
+                    <div class="col about">
+                    	<div class="leftstretch col-md-6" target="aboutus">
+                    		<img id="aboutusimage" src="' . $a['image'] . '" />
+						</div>
+                    	<div id="aboutus" class="col-md-6 scroll" style="height: 0; opacity: 0;">
 	                        <div class="section-title left">
 	                            <h3>' . $a['title'] . '</h3>
 	                        </div>

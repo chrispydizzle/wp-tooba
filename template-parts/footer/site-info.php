@@ -10,10 +10,10 @@
 
 ?>
 <div class="site-info">
-    <div class="col-md-6" style="text-align: left; font-style: italic;">
+    <div class="col-md-8" style="text-align: left; font-style: italic;">
         © <?php echo date( 'Y' ) ?> Tooba Furniture Factory
     </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
         <a class="cpsharplink" href="https://cpsharp.net">CP Sharp</a>
     </div><!-- .site-info -->
 </div>

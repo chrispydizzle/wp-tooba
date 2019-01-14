@@ -316,6 +316,12 @@ html.lb-disable-scrolling.cpsharp {
     }
   }
 
+  .site-info {
+    div.col-md-8 {
+      padding-left: 1%;
+    }
+  }
+
   .latest-news {
     &.col-md-6 {
     }
@@ -573,7 +579,7 @@ h3 {
   }
 }
 
-.owl-scroll{
+.owl-scroll {
   overflow: hidden;
 }
 
@@ -1557,8 +1563,24 @@ h3 {
   background: rgb(0, 0, 0);
   text-align: right;
   line-height: 1em;
-  padding: 1em 0;
+  padding: .5em .5em 1.5em .5em;
   color: $tooba_gray;
+
+  div {
+    float: left;
+    margin: 0;
+
+    &.col-md-8 {
+      max-width: 73%;
+      display: inline-block;
+      width: 74%;
+    }
+
+    &.col-md-4 {
+      max-width: 24%;
+      width: 24%;
+    }
+  }
 
   a {
     text-decoration: none;
@@ -1626,7 +1648,7 @@ a.cpsharplink, a.cpsharplink:visited {
   display: none;
 }
 
-.add2embottom{
+.add2embottom {
   margin-bottom: 2em;
 }
 

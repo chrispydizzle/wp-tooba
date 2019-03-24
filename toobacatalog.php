@@ -60,7 +60,7 @@ function tooba_catalog( $a ) {
 		++ $Governer;
 	}
 
-	if ( $Governer >= 6 ) {
+	if ( $Governer > 6 ) {
 		$OutstringContainer .= '<div class="getmore"><a class="seemorelink" href="#">SEE MORE</a></div>';
 	}
 

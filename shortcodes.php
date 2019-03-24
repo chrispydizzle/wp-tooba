@@ -19,17 +19,21 @@ function sc_headerbanner( $atts, $content = null ) {
 }
 
 function sc_about( $atts, $content = null ) {
-	$a = shortcode_atts( array(
+	$a         = shortcode_atts( array(
 		'title'  => 'About Us',
 		'text'   => 'something about us',
 		'image'  => 'wp-content/themes/tooba/images/temp/story.jpg',
 		'anchor' => 'about',
+		'scroll' => 'true'
 	), $atts );
+	$scrollvar = '';
+	if ( $a['scroll'] == 'true' ) {
+		$scrollvar = 'scrollable';
+	}
 
-// 	$thay = get_image_id($a['image']);
 
 	return '<div class="row" data-anchor="' . $a['anchor'] . '" >
-                    <div class="col about">
+                    <div class="col about ' . $scrollvar . '">
                     	<div class="leftstretch col-md-6" target="aboutus">
                     		<img id="aboutusimage" src="' . $a['image'] . '" />
 						</div>
@@ -192,12 +196,12 @@ function sc_contact( $atts, $content = null ) {
 	                                </div>
 	                                <div class="col-md-6 col-sm-6">
 	                                    <div class="form-group">
-	                                        <input name="email" class="form-control" id="email" type="text" placeholder="E-mail" required="required" />
+	                                        <input name="email" class="form-control" id="email" type="email" placeholder="E-mail" required="required" />
 	                                    </div>
 	                                </div>
 	                                <div class="col-md-6 col-sm-6">
 	                                    <div class="form-group">
-	                                        <input name="phone" class="form-control" id="phone" type="text" placeholder="Your Phone" required="required" />
+	                                        <input name="phone" class="form-control" id="phone" type="tel" placeholder="Your Phone" required="required" />
 	                                    </div>
 	                                </div>
 	                                <div class="col-md-6 col-sm-6">
@@ -226,7 +230,8 @@ function sc_news( $atts, $content = null ) {
 	$a = shortcode_atts( array(
 		'title'  => 'Latest News',
 		'anchor' => 'inthenews',
-		'slug'   => 'news'
+		'slug'   => 'news',
+		'scroll' => 'true'
 	), $atts );
 
 	$args = array(
@@ -249,11 +254,15 @@ function sc_news( $atts, $content = null ) {
 	$thumbid   = get_post_meta( $my_posts->ID, '_thumbnail_id', true );
 	$imageinfo = wp_get_attachment_metadata( $thumbid );
 	$imageurl  = wp_get_attachment_url( $thumbid );
-	$imgorig = wp_get_attachment_image_src( $thumbid , "full" );
+	$imgorig   = wp_get_attachment_image_src( $thumbid, "full" );
+	$scrollvar = '';
+	if ( $a['scroll'] == 'true' ) {
+		$scrollvar = 'scrollable';
+	}
 
-	return '<section class="pad-t80 pad-b50 green_buffer" data-anchor="' . $a['anchor'] . '">
+	return '<section class="pad-t80 pad-b50 green_buffer newscontainer" data-anchor="' . $a['anchor'] . '">
             <div class="container">
-                <div class="row">
+                <div class="row firstnewsrow">
                     <div class="col-md-12">
                         <div class="section-title text-center">
                             <h3>' . $a['title'] . '</h3>
@@ -261,14 +270,14 @@ function sc_news( $atts, $content = null ) {
                     </div>
                 </div>
                 <div class="row owl-scroll">
-                    <div class="col-md-12">
+                    <div class="col-md-12 content  ' . $scrollvar . '">
                         <div class="latest-news col-md-6">
                             <div class="latest-news-img" data-img-width="' . $imgorig[1] . '" data-img-height="' . $imgorig[2] . '" >
                                 <!--<span><div>' . $my_posts->post_date . '</span</div>>-->
                                 <img id="newsimage" src="' . $imgorig[0] . '" />
                             </div>
                         </div>
-                        <div id="newscopy" class="news-detail col-md-6 scroll" style="height:0; opacity: 0;">
+                        <div id="newscopy" class="news-detail col-md-6 scroll ' . $scrollvar . '" style="height:0; opacity: 0;">
                             <h4>' . $my_posts->post_title . '</h4>
                             <p>' . $my_posts->post_content . '</p>
 						</div>

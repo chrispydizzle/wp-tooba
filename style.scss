@@ -584,10 +584,18 @@ h3 {
 }
 
 .about {
-  overflow: hidden;
+  overflow: -webkit-paged-y;
+  padding-top: 5vh;
+  padding-bottom: 5vh;
 
-  .scroll {
-    overflow-y: scroll;
+  &.scrollable {
+    overflow: hidden;
+    padding-top: 0;
+    padding-bottom: 0;
+
+    .scroll {
+      overflow-y: scroll;
+    }
   }
 
   div {
@@ -1589,8 +1597,11 @@ h3 {
 }
 
 .news-detail {
-
-  overflow-y: scroll;
+  &.scrollable {
+    padding-top: 0;
+    padding-bottom: 0;
+    overflow-y: scroll;
+  }
 
   h4 {
     font-size: 2em;
@@ -1654,4 +1665,20 @@ a.cpsharplink, a.cpsharplink:visited {
 
 .hideme {
   position: absolute;
+}
+
+.newscontainer {
+  .owl-scroll {
+    .col-md-12 {
+      &.content {
+        padding-top: 5vh;
+        padding-bottom: 5vh;
+
+        &.scrollable{
+          padding-top: 0;
+          padding-bottom: 0;
+        }
+      }
+    }
+  }
 }

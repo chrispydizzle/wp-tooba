@@ -38,6 +38,18 @@ jQuery(document).ready(function () {
         var contactusform = jQuery('#contactus');
         var submitbutton = jQuery('#quotation').find('button');
 
+        var emailVal = jQuery(contactusform.find('[name="email"]')).val();
+        var phoneVal = jQuery(contactusform.find('[name="phone"]')).val();
+        if (!validateEmail(emailVal)) {
+            formError("Invalid e-mail address.")
+            return false;
+        }
+
+        if (!validatePhone(phoneVal)) {
+            formError("Invalid phone number.")
+            return false;
+        }
+
         if (allowsubmit) {
             allowsubmit = false;
             TweenMax.to(contactusform, .25, {opacity: ".25", ease: Power2.easeOut});
@@ -55,8 +67,9 @@ jQuery(document).ready(function () {
             }),
             success: function (response) {
                 allowsubmit = true;
-                TweenMax.to(contactusform, 1, {opacity: "0", ease: Power2.easeOut});
-                alert('Thanks, your message has been sent!');
+                // TweenMax.to(contactusform, 1, {opacity: "0", ease: Power2.easeOut});
+
+                formSuccess('Thanks, your message has been sent!');
             },
             error: function (response) {
                 allowsubmit = true;
@@ -210,10 +223,17 @@ function adjust() {
     let ncrImage = jQuery('#newsimage');
     // scr.css('height', scrImage.height());
 
-    TweenMax.to(scr, 1, {opacity: "1", height: scrImage.height() - 1 , ease: Power2.easeOut});
 
-    TweenMax.to(ncr, 1, {opacity: "1", height: ncrImage.height() - 1, ease: Power2.easeOut});
+    //if (scr.hasClass('scrollable')) {
+    TweenMax.to(scr, 1, {opacity: "1", height: scrImage.height() - 1, ease: Power2.easeOut});
+    //}
 
+    if (ncr.hasClass('scrollable')) {
+        TweenMax.to(ncr, 1, {opacity: "1", height: ncrImage.height() - 1, ease: Power2.easeOut});
+    } else {
+        ncr.css('height', 'auto');
+        ncr.css('opacity', '1');
+    }
 
     let tid = jQuery('.stretchto');
     for (let i = 0; i < tid.length; i++) {
@@ -239,6 +259,24 @@ function adjust() {
         boxText.css('height', parentBox.height() + 'px');
         console.log(boxText.text() + '|' + parentBox.height());
     }*/
+}
+
+function formSuccess(message) {
+    alert(message);
+}
+
+function formError(message) {
+    alert("Error: " + message);
+}
+
+function validateEmail(value) {
+    //alert(value);
+    return true;
+}
+
+function validatePhone(value) {
+    //alert(value);
+    return true;
 }
 
 function toggleScrollButton() {

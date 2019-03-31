@@ -553,10 +553,13 @@ h3 {
 
     div {
       vertical-align: middle;
+      font-size: 1.2em;
     }
 
     &.centerimage {
-      text-align: center;
+      text-align: right;
+      margin-right: 5vw;
+      margin-left: -5vw;
     }
 
     img {
@@ -585,8 +588,8 @@ h3 {
 
 .about {
   overflow: -webkit-paged-y;
-  padding-top: 5vh;
-  padding-bottom: 5vh;
+  // padding-top: 5vh;
+  // padding-bottom: 5vh;
 
   &.scrollable {
     overflow: hidden;
@@ -613,6 +616,7 @@ h3 {
 
   p {
     margin: 0 2.5%;
+    font-size: 1.2em;
   }
 
   .section-title {

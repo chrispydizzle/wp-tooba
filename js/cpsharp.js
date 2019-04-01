@@ -23,12 +23,40 @@ jQuery(window).load(function () {
     var newsdetail = jQuery('.news-detail');
 
     if (newsdetail.height() > latestimg.height()) {
-        //do_dynamic_news(newsdetail, latestimg);
+
     }
 });
 
-jQuery(document).ready(function () {
-    setInterval(toggleScrollButton, 100);
+function setupForm() {
+    var targetInput = jQuery(".formatphone");
+    var preText = '<input type="text" class="fpAreaCode" disabled="disabled" value="' + targetInput.attr("areaCode") + '" />';
+    var allowedKeys = [37, 38, 39, 40, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 9, 8, 33, 34, 35, 36, 46, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105];
+
+    targetInput.before(preText);
+    targetInput.keydown(function (event) {
+        var key = event.keyCode;
+        var box = event.target;
+
+        console.log(event.keyCode);
+        if (
+            !allowedKeys.includes(key) ||
+            (event.shiftKey && key !== 36) ||
+            (box.value.length >= 11 && (key !== 8 && key !== 9 && key !== 46 && key !== 37 && key !== 38 && key !== 39 && key !== 40))
+        ) {
+            return false;
+        }
+    })
+        .keyup(function (event) {
+            var box = event.target;
+            var boxValue = box.value;
+            var trueValue = boxValue.replace(" ", "");
+            if (trueValue.length > 5) {
+                boxValue = trueValue.slice(0, 5) + " " + trueValue.slice(5);
+                box.value = boxValue;
+            }
+            box.value = boxValue.trimEnd();
+            console.log(event.target.value);
+        });
 
     var form = jQuery('#quotation');
 
@@ -36,7 +64,8 @@ jQuery(document).ready(function () {
         console.log(e);
 
         var contactusform = jQuery('#contactus');
-        var submitbutton = jQuery('#quotation').find('button');
+        var formbody = jQuery('#quotation');
+        var submitbutton = formbody.find('button');
 
         var emailVal = jQuery(contactusform.find('[name="email"]')).val();
         var phoneVal = jQuery(contactusform.find('[name="phone"]')).val();
@@ -52,7 +81,7 @@ jQuery(document).ready(function () {
 
         if (allowsubmit) {
             allowsubmit = false;
-            TweenMax.to(contactusform, .25, {opacity: ".25", ease: Power2.easeOut});
+            TweenMax.to(contactusform, .5, {opacity: "0", ease: Power2.easeOut});
         } else {
             return false;
         }
@@ -66,10 +95,7 @@ jQuery(document).ready(function () {
                 message: jQuery('#message').val()
             }),
             success: function (response) {
-                allowsubmit = true;
-                // TweenMax.to(contactusform, 1, {opacity: "0", ease: Power2.easeOut});
-
-                formSuccess('Thanks, your message has been sent!');
+                formSuccess('Thank you for contacting us. We will get back to you via your contact details.');
             },
             error: function (response) {
                 allowsubmit = true;
@@ -79,6 +105,13 @@ jQuery(document).ready(function () {
 
         return false;
     });
+
+}
+
+jQuery(document).ready(function () {
+    setInterval(toggleScrollButton, 100);
+
+    setupForm();
 
 
     jQuery('.portfolio-post').on('mouseover touchstart', function (f) {
@@ -262,7 +295,10 @@ function adjust() {
 }
 
 function formSuccess(message) {
-    alert(message);
+    var contactusform = jQuery('#contactus');
+    var formbody = jQuery('#quotation');
+    formbody.hide().after("<div>" + message + "</div>");
+    TweenMax.to(contactusform , .5, {opacity: "1", ease: Power2.easeIn});
 }
 
 function formError(message) {
@@ -270,12 +306,10 @@ function formError(message) {
 }
 
 function validateEmail(value) {
-    //alert(value);
     return true;
 }
 
 function validatePhone(value) {
-    //alert(value);
     return true;
 }
 

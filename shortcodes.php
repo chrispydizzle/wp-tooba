@@ -201,7 +201,7 @@ function sc_contact( $atts, $content = null ) {
 	                                </div>
 	                                <div class="col-md-6 col-sm-6">
 	                                    <div class="form-group">
-	                                        <input name="phone" class="form-control" id="phone" type="tel" placeholder="Your Phone" required="required" />
+	                                        <input pattern= "[0-9]{5} [0-9]{5}" name="phone" class="form-control formatphone" id="phone" type="tel" placeholder="00000 00000" areaCode="+91" required="required" />
 	                                    </div>
 	                                </div>
 	                                <div class="col-md-6 col-sm-6">

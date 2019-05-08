@@ -111,29 +111,27 @@ function prep_and_send_mail() {
 	$forminfo['phone']   = sanitize_text_field( $_POST['phone'] );
 	$forminfo['address'] = sanitize_text_field( $_POST['address'] );
 	$forminfo['message'] = sanitize_text_field( $_POST['message'] );
-	contact_mail( $forminfo );
-}
+	$thisone             = $_POST['name'];
 
-function contact_mail( $forminfo ) {
-	$headers   = array( 'Content-Type: text/html; charset=UTF-8', 'From: Tooba.in Website <info@tooba.in>' );
 	$infoemail = 'info@tooba.in';
+	$header    = 'Content-Type: text/html';
 
-	$adminsubject   = 'tooba.in: contact request from ' . $forminfo['name'] . '.';
 	$visitorsubject = 'tooba.in: thanks for contacting us!';
+	$adminsubject   = 'tooba.in: contact request from ' . $_POST['name'] . '.';
 
-	$visitormessage = str_replace( '#NAME#', $forminfo['name'], $GLOBALS['visitor-email'] );
+	$visitormessage = '<html>We will respond to your inquiry as soon as possible!</html>';
+	$adminmessage   = '<html>Name: .' . $_POST['name'] . '<br />'.
+                      'Email: .' . $_POST['email'] . '<br />'.
+                      'Phone: .' . $_POST['phone'] . '<br />'.
+                      'Address: .' . $_POST['address'] . '<br />'.
+                      'Message: .' . $_POST['message'] . '<br />'.
+                      '</html>';
 
-	$adminmessage = str_replace( array( '#NAME#', '#EMAIL#', '#PHONE#', '#ADDRESS#', '#MESSAGE#' ), array(
-		$forminfo['name'],
-		$forminfo['email'],
-		$forminfo['phone'],
-		$forminfo['address'],
-		$forminfo['message']
-	), $GLOBALS['admin-email'] );
+	wp_mail( $_POST['email'], $visitorsubject, $visitormessage, $header );
 
 
-	wp_mail( $forminfo['email'], $visitorsubject, $visitormessage, $headers );
-	wp_mail( $infoemail, $adminsubject, $adminmessage, $headers );
+	wp_mail( $infoemail, $adminsubject, $adminmessage, $header );
+	// wp_mail( 'posada.chris@gmail.com', 'subj', $thisone, $header );
 }
 
 /**
@@ -227,11 +225,12 @@ function tooba_scripts() {
 add_action( 'wp_enqueue_scripts', 'tooba_scripts' );
 
 // retrieves the attachment ID from the file URL
-function get_image_id($image_url) {
+function get_image_id( $image_url ) {
 	global $wpdb;
-	$testString = wp_get_canonical_url().$image_url;
-	$imagesize = getimagesize($testString);
-	$attachment = $wpdb->get_col($wpdb->prepare("SELECT ID FROM $wpdb->posts WHERE guid='%s';", $testString ));
+	$testString = wp_get_canonical_url() . $image_url;
+	$imagesize  = getimagesize( $testString );
+	$attachment = $wpdb->get_col( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE guid='%s';", $testString ) );
+
 	return $attachment[0];
 }
 
@@ -266,9 +265,10 @@ function twentyseventeen_content_width() {
 	/**
 	 * Filter Twenty Seventeen content width of the theme.
 	 *
+	 * @param int $content_width Content width in pixels.
+	 *
 	 * @since Twenty Seventeen 1.0
 	 *
-	 * @param int $content_width Content width in pixels.
 	 */
 	$GLOBALS['content_width'] = apply_filters( 'twentyseventeen_content_width', $content_width );
 }
@@ -279,12 +279,12 @@ add_action( 'template_redirect', 'twentyseventeen_content_width', 0 );
 /**
  * Add preconnect for Google Fonts.
  *
- * @since Twenty Seventeen 1.0
- *
  * @param array $urls URLs to print for resource hints.
  * @param string $relation_type The relation type the URLs are printed.
  *
  * @return array $urls           URLs to print for resource hints.
+ * @since Twenty Seventeen 1.0
+ *
  */
 function twentyseventeen_resource_hints( $urls, $relation_type ) {
 	if ( wp_style_is( 'twentyseventeen-fonts', 'queue' ) && 'preconnect' === $relation_type ) {
@@ -342,11 +342,11 @@ add_action( 'widgets_init', 'twentyseventeen_widgets_init' );
  * Replaces "[...]" (appended to automatically generated excerpts) with ... and
  * a 'Continue reading' link.
  *
- * @since Twenty Seventeen 1.0
- *
  * @param string $link Link to single post/page.
  *
  * @return string 'Continue reading' link prepended with an ellipsis.
+ * @since Twenty Seventeen 1.0
+ *
  */
 function twentyseventeen_excerpt_more( $link ) {
 	if ( is_admin() ) {
@@ -401,13 +401,13 @@ add_action( 'wp_head', 'twentyseventeen_colors_css_wrap' );
  * Add custom image sizes attribute to enhance responsive image functionality
  * for content images.
  *
- * @since Twenty Seventeen 1.0
- *
  * @param string $sizes A source size value for use in a 'sizes' attribute.
  * @param array $size Image size. Accepts an array of width and height
  *                      values in pixels (in that order).
  *
  * @return string A source size value for use in a content image 'sizes' attribute.
+ * @since Twenty Seventeen 1.0
+ *
  */
 function twentyseventeen_content_image_sizes_attr( $sizes, $size ) {
 	$width = $size[0];
@@ -430,13 +430,13 @@ add_filter( 'wp_calculate_image_sizes', 'twentyseventeen_content_image_sizes_att
 /**
  * Filter the `sizes` value in the header image markup.
  *
- * @since Twenty Seventeen 1.0
- *
  * @param string $html The HTML image tag markup being filtered.
  * @param object $header The custom header object returned by 'get_custom_header()'.
  * @param array $attr Array of the attributes for the image tag.
  *
  * @return string The filtered header image HTML.
+ * @since Twenty Seventeen 1.0
+ *
  */
 function twentyseventeen_header_image_tag( $html, $header, $attr ) {
 	if ( isset( $attr['sizes'] ) ) {
@@ -452,13 +452,13 @@ add_filter( 'get_header_image_tag', 'twentyseventeen_header_image_tag', 10, 3 );
  * Add custom image sizes attribute to enhance responsive image functionality
  * for post thumbnails.
  *
- * @since Twenty Seventeen 1.0
- *
  * @param array $attr Attributes for the image markup.
  * @param int $attachment Image attachment ID.
  * @param array $size Registered image size or flat array of height and width dimensions.
  *
  * @return string A source size value for use in a post thumbnail 'sizes' attribute.
+ * @since Twenty Seventeen 1.0
+ *
  */
 function twentyseventeen_post_thumbnail_sizes_attr( $attr, $attachment, $size ) {
 	if ( is_archive() || is_search() || is_home() ) {
@@ -475,11 +475,11 @@ add_filter( 'wp_get_attachment_image_attributes', 'twentyseventeen_post_thumbnai
 /**
  * Use front-page.php when Front page displays is set to a static page.
  *
- * @since Twenty Seventeen 1.0
- *
  * @param string $template front-page.php.
  *
  * @return string The template to be used: blank if is_home() is true (defaults to index.php), else $template.
+ * @since Twenty Seventeen 1.0
+ *
  */
 function twentyseventeen_front_page_template( $template ) {
 	return is_home() ? '' : $template;
